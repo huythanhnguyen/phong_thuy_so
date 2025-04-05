@@ -137,66 +137,70 @@
       </div>
     </section>
 
-    <!-- Topics Section -->
-    <section class="py-16 bg-white">
-      <div class="container mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center mb-12">Khám phá thêm</h2>
-        
-        <div class="grid md:grid-cols-2 gap-6">
-          <div class="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow">
-            <div class="h-40 bg-blue-50 flex items-center justify-center">
-              <font-awesome-icon icon="phone-alt" class="text-5xl text-primary" />
-            </div>
-            <div class="p-6">
-              <h3 class="text-xl font-bold mb-3">Bát cục Linh số là gì?</h3>
-              <p class="text-gray-600 mb-4">Khám phá về phương pháp Tứ Cát Tứ Hung và cách thức phân loại số điện thoại theo bát cục linh số.</p>
-              <button @click="navigateTo('login')" class="text-primary font-medium hover:underline">
-                Tìm hiểu thêm <font-awesome-icon icon="arrow-right" class="ml-1" />
-              </button>
-            </div>
-          </div>
-          
-          <div class="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow">
-            <div class="h-40 bg-green-50 flex items-center justify-center">
-              <font-awesome-icon icon="mobile-alt" class="text-5xl text-green-500" />
-            </div>
-            <div class="p-6">
-              <h3 class="text-xl font-bold mb-3">Cách chọn số điện thoại tốt</h3>
-              <p class="text-gray-600 mb-4">Hướng dẫn chi tiết cách chọn số điện thoại hợp với mệnh, tuổi và hòa hợp với các yếu tố phong thủy.</p>
-              <button @click="navigateTo('login')" class="text-primary font-medium hover:underline">
-                Tìm hiểu thêm <font-awesome-icon icon="arrow-right" class="ml-1" />
-              </button>
-            </div>
-          </div>
-          
-          <div class="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow">
-            <div class="h-40 bg-yellow-50 flex items-center justify-center">
-              <font-awesome-icon icon="credit-card" class="text-5xl text-yellow-500" />
-            </div>
-            <div class="p-6">
-              <h3 class="text-xl font-bold mb-3">Chọn số tài khoản ngân hàng</h3>
-              <p class="text-gray-600 mb-4">Cách chọn số tài khoản ngân hàng để thu hút tài lộc, thịnh vượng và may mắn trong tài chính.</p>
-              <button @click="navigateTo('login')" class="text-primary font-medium hover:underline">
-                Tìm hiểu thêm <font-awesome-icon icon="arrow-right" class="ml-1" />
-              </button>
-            </div>
-          </div>
-          
-          <div class="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow">
-            <div class="h-40 bg-red-50 flex items-center justify-center">
-              <font-awesome-icon icon="id-card" class="text-5xl text-red-500" />
-            </div>
-            <div class="p-6">
-              <h3 class="text-xl font-bold mb-3">Ý nghĩa Căn cước công dân</h3>
-              <p class="text-gray-600 mb-4">Phân tích ý nghĩa và ảnh hưởng của số căn cước công dân đối với vận mệnh và cuộc sống.</p>
-              <button @click="navigateTo('login')" class="text-primary font-medium hover:underline">
-                Tìm hiểu thêm <font-awesome-icon icon="arrow-right" class="ml-1" />
-              </button>
-            </div>
-          </div>
+<!-- Topics Section -->
+<section class="py-16 bg-white">
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center mb-12">Khám phá thêm</h2>
+    
+    <div class="grid md:grid-cols-2 gap-6">
+      <!-- 1. Bát cục Linh số -->
+      <div class="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow">
+        <div class="h-40 bg-blue-50 flex items-center justify-center">
+          <font-awesome-icon icon="phone-alt" class="text-5xl text-primary" />
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold mb-3">Bát cục Linh số là gì?</h3>
+          <p class="text-gray-600 mb-4">Khám phá về phương pháp Tứ Cát Tứ Hung và cách thức phân loại số điện thoại theo bát cục linh số.</p>
+          <router-link to="/guides/bat-cuc-linh-so" class="text-primary font-medium hover:underline inline-flex items-center">
+            Tìm hiểu thêm <font-awesome-icon icon="arrow-right" class="ml-1" />
+          </router-link>
         </div>
       </div>
-    </section>
+      
+      <!-- 2. Cách chọn số điện thoại tốt -->
+      <div class="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow">
+        <div class="h-40 bg-green-50 flex items-center justify-center">
+          <font-awesome-icon icon="mobile-alt" class="text-5xl text-green-500" />
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold mb-3">Cách chọn số điện thoại tốt</h3>
+          <p class="text-gray-600 mb-4">Hướng dẫn chi tiết cách chọn số điện thoại hợp với mệnh, tuổi và hòa hợp với các yếu tố phong thủy.</p>
+          <router-link to="/guides/chon-so-dien-thoai" class="text-primary font-medium hover:underline inline-flex items-center">
+            Tìm hiểu thêm <font-awesome-icon icon="arrow-right" class="ml-1" />
+          </router-link>
+        </div>
+      </div>
+      
+      <!-- 3. Chọn số tài khoản ngân hàng -->
+      <div class="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow">
+        <div class="h-40 bg-yellow-50 flex items-center justify-center">
+          <font-awesome-icon icon="credit-card" class="text-5xl text-yellow-500" />
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold mb-3">Chọn số tài khoản ngân hàng</h3>
+          <p class="text-gray-600 mb-4">Cách chọn số tài khoản ngân hàng để thu hút tài lộc, thịnh vượng và may mắn trong tài chính.</p>
+          <router-link to="/guides/chon-so-ngan-hang" class="text-primary font-medium hover:underline inline-flex items-center">
+            Tìm hiểu thêm <font-awesome-icon icon="arrow-right" class="ml-1" />
+          </router-link>
+        </div>
+      </div>
+      
+      <!-- 4. Ý nghĩa Căn cước công dân -->
+      <div class="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow">
+        <div class="h-40 bg-red-50 flex items-center justify-center">
+          <font-awesome-icon icon="id-card" class="text-5xl text-red-500" />
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold mb-3">Ý nghĩa Căn cước công dân</h3>
+          <p class="text-gray-600 mb-4">Phân tích ý nghĩa và ảnh hưởng của số căn cước công dân đối với vận mệnh và cuộc sống.</p>
+          <router-link to="/guides/can-cuoc-cong-dan" class="text-primary font-medium hover:underline inline-flex items-center">
+            Tìm hiểu thêm <font-awesome-icon icon="arrow-right" class="ml-1" />
+          </router-link>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
     <!-- FAQ Section -->
     <section class="py-16 bg-gray-50">

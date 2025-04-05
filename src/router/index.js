@@ -3,6 +3,12 @@ import HomeView from '../views/HomeView.vue'
 import LoginView from '../views/LoginView.vue'
 import AppView from '../views/AppView.vue'
 
+// Thêm import cho các trang con
+import BatCucLinhSo from '../views/guides/BatCucLinhSo.vue'
+import ChonSoDienThoai from '../views/guides/ChonSoDienThoai.vue'
+import ChonSoNganHang from '../views/guides/ChonSoNganHang.vue'
+import CanCuocCongDan from '../views/guides/CanCuocCongDan.vue'
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -21,6 +27,27 @@ const router = createRouter({
       name: 'app',
       component: AppView,
       meta: { requiresAuth: true }
+    },
+    // Thêm các route mới
+    {
+      path: '/guides/bat-cuc-linh-so',
+      name: 'batCucLinhSo',
+      component: BatCucLinhSo
+    },
+    {
+      path: '/guides/chon-so-dien-thoai',
+      name: 'chonSoDienThoai',
+      component: ChonSoDienThoai
+    },
+    {
+      path: '/guides/chon-so-ngan-hang',
+      name: 'chonSoNganHang',
+      component: ChonSoNganHang
+    },
+    {
+      path: '/guides/can-cuoc-cong-dan',
+      name: 'canCuocCongDan',
+      component: CanCuocCongDan
     }
   ]
 })

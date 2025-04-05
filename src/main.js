@@ -14,7 +14,9 @@ import {
   faBriefcase, faHeart, faCoins, faHeartbeat, faStar, 
   faExclamationCircle, faQuestionCircle, faSun, faCloud, 
   faBalanceScale, faPlusCircle, faMinusCircle, faTrashAlt,
-  faIdCard, faCreditCard, faChevronDown, faUserCircle, faPlus
+  faIdCard, faCreditCard, faChevronDown, faUserCircle, faPlus,
+    // Icons mới
+    faMobileAlt, faArrowRight, faChevronUp, faMobile, faMoneyBill
 } from '@fortawesome/free-solid-svg-icons'
 
 // Add all the necessary icons
@@ -24,7 +26,9 @@ library.add(
   faBriefcase, faHeart, faCoins, faHeartbeat, faStar, 
   faExclamationCircle, faQuestionCircle, faSun, faCloud, 
   faBalanceScale, faPlusCircle, faMinusCircle, faTrashAlt,
-  faIdCard, faCreditCard, faChevronDown, faUserCircle, faPlus
+  faIdCard, faCreditCard, faChevronDown, faUserCircle, faPlus,
+    // Icons mới
+    faMobileAlt, faArrowRight, faChevronUp, faMobile, faMoneyBill
 )
 
 // Import global CSS
