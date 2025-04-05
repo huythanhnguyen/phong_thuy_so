@@ -40,8 +40,9 @@
             </div>
           </div>
           <div class="lg:w-1/2">
-            <img src="https://via.placeholder.com/500x400?text=Phong+Thuy+So" alt="Phong thủy số" class="w-full max-w-md mx-auto hero-image" />
-          </div>
+            <img src="/img/numbers-illustration.svg" alt="Phong thủy số" class="w-full max-w-md mx-auto object-contain" 
+            onerror="this.onerror=null; this.src='https://via.placeholder.com/500x400?text=Phong+Thuy+So'"/>
+      </div>
         </div>
       </div>
     </section>
