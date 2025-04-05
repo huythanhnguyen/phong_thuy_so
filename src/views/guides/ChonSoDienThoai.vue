@@ -1,14 +1,12 @@
 <template>
   <div class="flex flex-col min-h-screen bg-gray-100">
-    <!-- Header -->
-    <div class="bg-primary-color text-white py-10 text-center">
-      <div class="container mx-auto px-4">
-        <h1 class="text-3xl md:text-4xl font-semibold mb-2">Chọn Số Điện Thoại Hợp Mệnh</h1>
-        <p class="text-lg opacity-90 max-w-2xl mx-auto">
-          Hãy chọn số điện thoại phù hợp với bản mệnh để thu hút tài lộc và may mắn
-        </p>
-      </div>
-    </div>
+      <!-- Header -->
+      <Header @navigate="handleNavigate" />
+
+<!-- Main Content -->
+<div class="bg-primary-color text-white py-10 text-center">
+  <!-- Banner content... -->
+</div>
 
     <!-- Main Content -->
     <div class="flex-1 py-10">
@@ -126,8 +124,10 @@
 
 <script setup>
 import { ref, reactive } from 'vue'
+import { useRouter } from 'vue-router'
+import Header from '@/components/layout/Header.vue'
 import Footer from '@/components/layout/Footer.vue'
-
+const router = useRouter()
 // Form data
 const formData = reactive({
   name: '',

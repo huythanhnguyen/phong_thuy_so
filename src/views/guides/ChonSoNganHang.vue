@@ -1,24 +1,7 @@
 <template>
   <div class="min-h-screen flex flex-col">
     <!-- Header -->
-    <header class="bg-white shadow-sm sticky top-0 z-10">
-      <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-        <div class="flex items-center space-x-2">
-          <router-link to="/" class="flex items-center space-x-2">
-            <font-awesome-icon icon="phone-alt" class="text-primary text-xl" />
-            <span class="font-semibold text-lg text-gray-800">Phong Thủy Số</span>
-          </router-link>
-        </div>
-        <div class="flex space-x-3">
-          <button @click="navigateTo('login')" class="auth-btn login-btn hover:bg-black">
-            Đăng nhập
-          </button>
-          <button @click="navigateTo('register')" class="auth-btn signup-btn hover:bg-gray-100">
-            Đăng ký
-          </button>
-        </div>
-      </div>
-    </header>
+    <Header />
 
     <!-- Main Content -->
     <div class="container mx-auto px-4 py-8 flex-grow">
@@ -51,41 +34,25 @@
     </div>
 
     <!-- Footer -->
-    <footer class="bg-gray-100 py-4">
-      <div class="container mx-auto px-4 text-center text-gray-600">
-        &copy; 2023 Phong Thủy Số. All rights reserved.
-      </div>
-    </footer>
+    <Footer />
   </div>
 </template>
 
-<script>
-export default {
-  name: "BankAccount",
-  methods: {
-    navigateTo(route) {
-      this.$router.push({ name: route });
-    }
-  }
-}
+<script setup>
+import { useRouter } from 'vue-router'
+import Header from '@/components/layout/Header.vue'
+import Footer from '@/components/layout/Footer.vue'
+
+const router = useRouter()
 </script>
 
 <style scoped>
-.auth-btn {
-  padding: 0.5rem 1rem;
-  border-radius: 0.375rem;
-  font-weight: 600;
+/* Các style bổ sung nếu cần */
+.text-primary {
+  color: var(--primary-color, #4361ee);
 }
 
-.login-btn {
-  background-color: #ffffff;
-  border: 1px solid #d1d5db;
-  color: #1f2937;
-}
-
-.signup-btn {
-  background-color: #1f2937;
-  border: 1px solid transparent;
-  color: #ffffff;
+.hover\:text-primary:hover {
+  color: var(--primary-color, #4361ee);
 }
 </style>
