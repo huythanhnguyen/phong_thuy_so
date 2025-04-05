@@ -1,0 +1,6 @@
+{
+    "public_root": "dist",
+    "routes": {
+      "/**": "index.html"
+    }
+  }

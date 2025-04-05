@@ -1,0 +1,11 @@
+services:
+- type: web
+  name: phong_thuy_so
+  buildCommand: npm run build
+  startCommand: npm start
+  publishDir: dist
+  env: static
+  routes:
+    - type: rewrite
+      source: /*
+      destination: /index.html
