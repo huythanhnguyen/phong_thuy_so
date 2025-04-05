@@ -2,9 +2,9 @@ services:
 - type: web
   name: phong_thuy_so
   buildCommand: npm run build
-  startCommand: npm start
   publishDir: dist
   env: static
+  # Xóa phần startCommand vì không cần
   routes:
     - type: rewrite
       source: /*
