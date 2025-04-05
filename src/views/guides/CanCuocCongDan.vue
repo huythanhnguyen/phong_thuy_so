@@ -46,15 +46,64 @@
             Việc sở hữu CCCD không chỉ giúp xác minh danh tính mà còn tạo điều kiện thuận lợi cho việc thực hiện các giao dịch hành chính và tiếp cận các tiện ích xã hội.
           </p>
         </div>
+                    <!-- call to action -->            
+                    <div class="text-center my-12">
+              <p class="text-lg font-medium mb-6">Bạn muốn phân tích số điện thoại của mình?</p>
+              <button @click="navigateTo('login')" class="bg-primary text-white font-bold py-3 px-8 rounded-lg hover:bg-primary-dark transition-colors">
+                Bắt đầu ngay
+              </button>
+            </div>
       </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="bg-gray-100">
-      <div class="container mx-auto px-4 py-6 text-center text-gray-600">
-        © 2023 Phong Thủy Số. All rights reserved.
-      </div>
-    </footer>
+      <!-- Footer -->
+      <footer class="bg-gray-800 text-gray-300 py-12 mt-auto">
+        <div class="container mx-auto px-4">
+          <div class="grid md:grid-cols-4 gap-8">
+            <div>
+              <h3 class="text-lg font-semibold mb-4">Phong Thủy Số</h3>
+              <p class="text-sm opacity-75">
+                Giải mã ý nghĩa con số trong cuộc sống của bạn. Chúng tôi giúp bạn hiểu và tận dụng năng lượng của các con số.
+              </p>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold mb-4">Liên kết</h3>
+              <ul class="space-y-2">
+                <li><router-link to="/" class="hover:text-white">Trang chủ</router-link></li>
+                <li><a href="#" class="hover:text-white">Dịch vụ</a></li>
+                <li><a href="#" class="hover:text-white">Giới thiệu</a></li>
+                <li><a href="#" class="hover:text-white">Điều khoản sử dụng</a></li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold mb-4">Dịch vụ</h3>
+              <ul class="space-y-2">
+                <li><a href="#" class="hover:text-white">Phân tích số điện thoại</a></li>
+                <li><a href="#" class="hover:text-white">Tư vấn chọn số</a></li>
+                <li><a href="#" class="hover:text-white">Phân tích căn cước công dân</a></li>
+                <li><a href="#" class="hover:text-white">Phân tích số tài khoản</a></li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold mb-4">Liên hệ</h3>
+              <ul class="space-y-2">
+                <li class="flex items-center">
+                  <font-awesome-icon icon="envelope" class="mr-2" />
+                  <a href="mailto:contact@phongthuyso.vn" class="hover:text-white">contact@phongthuyso.vn</a>
+                </li>
+                <li class="flex items-center">
+                  <font-awesome-icon icon="phone" class="mr-2" />
+                  <a href="tel:+84123456789" class="hover:text-white">0123 456 789</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="border-t border-gray-700 mt-10 pt-6 text-sm text-center">
+            &copy; {{ currentYear }} Phong Thủy Số - Mọi quyền được bảo lưu
+          </div>
+        </div>
+      </footer>
+      
   </div>
 </template>
 

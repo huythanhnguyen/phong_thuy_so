@@ -148,7 +148,7 @@
                 <strong>Tương hợp với bản mệnh</strong>: Mối quan hệ giữa dãy số với ngày sinh và bản mệnh của người sử dụng
               </li>
             </ul>
-            
+            <!-- call to action -->            
             <div class="text-center my-12">
               <p class="text-lg font-medium mb-6">Bạn muốn phân tích số điện thoại của mình?</p>
               <button @click="navigateTo('login')" class="bg-primary text-white font-bold py-3 px-8 rounded-lg hover:bg-primary-dark transition-colors">
