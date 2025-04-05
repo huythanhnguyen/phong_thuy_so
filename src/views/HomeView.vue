@@ -130,7 +130,7 @@
                 </button>
               </div>
               <p class="text-xs text-gray-500 mt-2">
-                Nhập số điện thoại để phân tích hoặc đặt câu hỏi như "Số 8 mang ý nghĩa gì?"
+                Nhập số điện thoại để phân tích hoặc đặt câu hỏi như "Số 18 mang ý nghĩa gì?"
               </p>
             </div>
           </div>
