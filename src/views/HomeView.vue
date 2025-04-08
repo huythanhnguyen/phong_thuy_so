@@ -237,7 +237,7 @@
       </div>
     </section>
 
-    <!-- Demo Chat Section -->
+<!-- Demo Chat Section -->
 <section id="demo-chat" class="py-16 bg-gray-50">
   <div class="container mx-auto px-4">
     <h2 class="text-3xl font-bold text-center mb-4">Dùng thử ngay</h2>
@@ -250,7 +250,7 @@
         <!-- Chat Messages -->
         <div class="h-80 overflow-y-auto p-4 bg-gray-50" ref="chatContainer">
           <div class="mb-4 max-w-[80%] rounded-lg p-3 bg-white shadow-sm ml-0 mr-auto">
-            Xin chào! Tôi là trợ lý phân tích Bát Cục Linh Số. Bạn có thể nhập số điện thoại để phân tích hoặc đặt câu hỏi về ý nghĩa các con số.
+            Xin chào! Tôi là trợ lý phân tích Bát Cục Linh Số. Bạn có thể nhập số điện thoại để phân tích ngay.
           </div>
           
           <div v-for="(message, index) in chatMessages" :key="index" 
@@ -277,17 +277,17 @@
               class="flex-1 border border-gray-300 rounded-l-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
               placeholder="Nhập số điện thoại để phân tích..."
               @keyup.enter="sendMessage"
-              :disabled="isTyping || hasReachedLimit"
+              :disabled="isTyping || hasAnalyzed"
             />
             <button
               @click="sendMessage"
               class="bg-primary text-white px-4 py-2 rounded-r-lg hover:bg-primary-dark"
-              :disabled="!userInput.trim() || isTyping || hasReachedLimit"
+              :disabled="!userInput.trim() || isTyping || hasAnalyzed"
             >
               <font-awesome-icon icon="paper-plane" />
             </button>
           </div>
-          <p v-if="hasReachedLimit" class="text-xs text-red-500 mt-2">
+          <p v-if="hasAnalyzed" class="text-xs text-red-500 mt-2">
             Bạn đã sử dụng lượt phân tích miễn phí. Vui lòng đăng nhập để tiếp tục!
           </p>
           <p v-else class="text-xs text-gray-500 mt-2">
@@ -484,23 +484,18 @@
 <script setup>
 import { ref, computed, onMounted, nextTick, watch } from 'vue'
 import { useRouter } from 'vue-router'
-import { useAuthStore } from '@/stores/auth'
-import analysisService from '@/services/analysisService'
+import axios from 'axios'
 
 const router = useRouter()
-const authStore = useAuthStore()
+const API_URL = 'https://chatbotsdtapi.onrender.com/api'
 
 // Chat variables
 const userInput = ref('')
 const isTyping = ref(false)
 const chatMessages = ref([])
 const chatContainer = ref(null)
-const sessionKey = 'demo_chat_analyzed'
-
-// Computed property to check if user has reached limit
-const hasReachedLimit = computed(() => {
-  return localStorage.getItem(sessionKey) === 'true'
-})
+const sessionKey = 'demo_analysis_done'
+const hasAnalyzed = ref(localStorage.getItem(sessionKey) === 'true')
 
 // Scroll to bottom of chat
 const scrollToBottom = async () => {
@@ -537,125 +532,137 @@ const isPhoneNumber = (text) => {
   return /^0\d{9,10}$/.test(cleaned)
 }
 
-// Format analysis results for display
+// Format phone number analysis for display
 const formatAnalysisResult = (data) => {
   try {
-    // This would be customized based on your actual API response structure
-    const analysis = data.result || data
+    // Lấy dữ liệu từ response API
+    const analysisData = data.analysisData || {};
+    const phoneNumber = data.phoneNumber || '';
     
-    // Extract what we need for the demo (overview, personality, last pair)
-    let content = `<p class="mb-2"><strong>Phân tích sơ bộ số ${data.phoneNumber || ''}:</strong></p>`
+    let content = `<p class="mb-2"><strong>Phân tích sơ bộ số ${phoneNumber}:</strong></p>`;
     
-    // Overview
-    if (analysis.energyLevel) {
-      const catCount = analysis.energyLevel.cat || 0
-      const hungCount = Math.abs(analysis.energyLevel.hung || 0)
-      const total = catCount + hungCount
-      const catPercent = total > 0 ? Math.round((catCount / total) * 100) : 0
-      const hungPercent = 100 - catPercent
+    // Thông tin tổng quan
+    if (analysisData.energyLevel) {
+      const catCount = analysisData.energyLevel.cat || 0;
+      const hungCount = Math.abs(analysisData.energyLevel.hung || 0);
+      const total = catCount + hungCount;
+      const catPercent = total > 0 ? Math.round((catCount / total) * 100) : 0;
+      const hungPercent = 100 - catPercent;
       
-      content += `<p class="mb-1">• Tổng: ${total} cặp số (${catCount} cát tinh, ${hungCount} hung tinh)</p>`
-      content += `<p class="mb-1">• Tỷ lệ: ${catPercent}% cát - ${hungPercent}% hung (${catPercent >= 70 ? 'Thiên về cát' : (hungPercent >= 70 ? 'Thiên về hung' : 'Cân bằng')})</p>`
+      content += `<p class="mb-1">• Tổng: ${total} cặp số (${catCount} cát tinh, ${hungCount} hung tinh)</p>`;
+      content += `<p class="mb-1">• Tỷ lệ: ${catPercent}% cát - ${hungPercent}% hung</p>`;
+      content += `<p class="mb-1">• Năng lượng: ${
+        catPercent >= 70 ? '<span class="text-green-600 font-semibold">Thiên về cát</span>' :
+        (hungPercent >= 70 ? '<span class="text-red-600 font-semibold">Thiên về hung</span>' :
+        '<span class="text-blue-600 font-semibold">Cân bằng</span>')
+      }</p>`;
     }
     
-    // Last pair analysis
-    if (analysis.starSequence && analysis.starSequence.length > 0) {
-      const lastStar = analysis.starSequence[analysis.starSequence.length - 1]
-      content += `<p class="mb-1">• Cặp số cuối: ${lastStar.originalPair || ''} - ${lastStar.name || ''} (${lastStar.nature === 'Cát' ? 'Tốt' : 'Xấu'})</p>`
+    // Phân tích cặp số cuối
+    if (analysisData.starSequence && analysisData.starSequence.length > 0) {
+      // Lấy cặp số cuối cùng để phân tích
+      const lastStar = analysisData.starSequence[analysisData.starSequence.length - 1];
+      const starClass = lastStar.nature === 'Cát' ? 'text-green-600' : 'text-red-600';
+      
+      content += `<p class="mb-1">• Cặp số cuối: <span class="font-medium">${lastStar.originalPair || ''}</span> - 
+        <span class="${starClass} font-semibold">${lastStar.name || ''}</span> 
+        (${lastStar.nature === 'Cát' ? 'Cát tinh' : 'Hung tinh'})</p>`;
     }
     
-    // Summary
-    content += `<p class="mb-2">• Số này ${analysis.balance === 'CAT_HEAVY' ? 'khá thuận lợi' : (analysis.balance === 'HUNG_HEAVY' ? 'có nhiều thách thức' : 'khá cân bằng')} cho mục đích công việc và phát triển cá nhân</p>`
+    // Thêm một phần trích dẫn từ phân tích (nếu có)
+    if (data.analysis) {
+      const shortAnalysis = data.analysis.split('.').slice(0, 2).join('.') + '.';
+      content += `<p class="my-2 italic text-gray-600">"${shortAnalysis}"</p>`;
+    }
     
     // Call to action
-    content += `<p class="mt-4 text-primary font-semibold">Đăng ký để xem phân tích chi tiết và ý nghĩa từng cặp số!</p>`
+    content += `<p class="mt-4 pt-2 border-t border-gray-200">
+      <span class="text-primary font-semibold">Đăng ký để xem phân tích chi tiết và ý nghĩa từng cặp số!</span>
+    </p>`;
     
-    return content
+    return content;
   } catch (error) {
-    console.error('Error formatting analysis:', error)
-    return 'Có lỗi xảy ra khi phân tích số. Vui lòng thử lại sau!'
+    console.error('Error formatting analysis:', error);
+    return 'Có lỗi xảy ra khi phân tích số. Vui lòng thử lại sau!';
   }
 }
 
 // Send user message and get response
 const sendMessage = async () => {
-  if (!userInput.value.trim() || isTyping.value || hasReachedLimit.value) return
+  if (!userInput.value.trim() || isTyping.value || hasAnalyzed.value) return;
   
-  const text = userInput.value.trim()
-  userInput.value = ''
-  addUserMessage(text)
+  const text = userInput.value.trim();
+  userInput.value = '';
+  addUserMessage(text);
   
-  // Only process phone numbers for the demo
+  // Chỉ xử lý input là số điện thoại
   if (isPhoneNumber(text)) {
-    if (hasReachedLimit.value) {
-      addBotMessage('Bạn đã sử dụng lượt phân tích miễn phí. Vui lòng <a href="/login" class="text-primary font-semibold">đăng nhập</a> để tiếp tục!')
-      return
-    }
-    
-    isTyping.value = true
+    isTyping.value = true;
     
     try {
-      // Call the actual API
-      const cleanedNumber = text.replace(/\D/g, '')
-      const result = await analysisService.analyzePhoneNumber(cleanedNumber)
+      // Gọi API thực tế để phân tích số
+      const cleanedNumber = text.replace(/\D/g, '');
+      const response = await axios.post(`${API_URL}/analyze`, {
+        phoneNumber: cleanedNumber
+      });
       
-      // Delay for natural typing feeling
-      setTimeout(() => {
-        if (result.success) {
-          // Success response
-          addBotMessage(formatAnalysisResult(result.data || result))
-          
-          // Mark as analyzed in this session
-          localStorage.setItem(sessionKey, 'true')
-          
-          // Add login reminder
-          setTimeout(() => {
-            addBotMessage('Bạn đã sử dụng hết lượt phân tích miễn phí. <a href="/login" class="text-primary font-semibold">Đăng nhập</a> để xem phân tích chi tiết hơn và phân tích thêm nhiều số khác!')
-          }, 2000)
-        } else {
-          // Error response
-          addBotMessage(`Rất tiếc, tôi không thể phân tích số này. Lỗi: ${result.error || 'Không xác định'}`)
-        }
-        isTyping.value = false
-      }, 1500)
-    } catch (error) {
-      console.error('Error analyzing phone number:', error)
-      
-      // Fallback to dummy analysis if API fails
-      setTimeout(() => {
-        addBotMessage('Kết nối đến máy chủ gặp sự cố. Tôi sẽ cung cấp một phân tích mẫu:<br><br>' + 
-          '<p class="mb-2"><strong>Phân tích sơ bộ số ' + text + ':</strong></p>' +
-          '<p class="mb-1">• Tổng: 9 cặp số (5 cát tinh, 4 hung tinh)</p>' +
-          '<p class="mb-1">• Tỷ lệ: 55% cát - 45% hung (Thiên về cát)</p>' +
-          '<p class="mb-1">• Cặp số cuối: 78 - Sinh Khí (Tốt)</p>' +
-          '<p class="mb-2">• Số này khá thuận lợi cho mục đích công việc và phát triển cá nhân</p>' +
-          '<p class="mt-4 text-primary font-semibold">Đăng ký để xem phân tích chi tiết và ý nghĩa từng cặp số!</p>')
+      // Xử lý phản hồi từ API
+      if (response.data && response.data.success) {
+        // Hiển thị kết quả phân tích
+        addBotMessage(formatAnalysisResult(response.data));
         
-        localStorage.setItem(sessionKey, 'true')
+        // Đánh dấu đã phân tích trong session này
+        localStorage.setItem(sessionKey, 'true');
+        hasAnalyzed.value = true;
         
+        // Yêu cầu đăng nhập sau vài giây
         setTimeout(() => {
-          addBotMessage('Bạn đã sử dụng hết lượt phân tích miễn phí. <a href="/login" class="text-primary font-semibold">Đăng nhập</a> để xem phân tích chi tiết hơn và phân tích thêm nhiều số khác!')
-        }, 2000)
-        
-        isTyping.value = false
-      }, 1500)
+          addBotMessage(`<p class="text-center">
+            <span class="block mb-3">Bạn đã sử dụng hết lượt phân tích miễn phí.</span>
+            <a href="/login" class="inline-block bg-primary text-white py-2 px-4 rounded-lg hover:bg-primary-dark transition-colors">
+              Đăng nhập để xem chi tiết hơn
+            </a>
+          </p>`);
+        }, 3000);
+      } else {
+        // Xử lý lỗi từ API
+        addBotMessage(`Rất tiếc, tôi không thể phân tích số này. ${response.data.error || 'Vui lòng thử lại sau.'}`);
+      }
+    } catch (error) {
+      console.error('Error analyzing phone number:', error);
+      
+      // Thông báo lỗi kết nối
+      addBotMessage(`
+        <p class="mb-2">Không thể kết nối đến máy chủ phân tích. Vui lòng thử lại sau hoặc đăng nhập để sử dụng phiên bản đầy đủ.</p>
+        <a href="/login" class="text-primary font-semibold">Đăng nhập ngay</a>
+      `);
+    } finally {
+      isTyping.value = false;
     }
   } else {
-    // Handle non-phone number inputs
-    isTyping.value = true
+    // Xử lý khi input không phải số điện thoại
+    isTyping.value = true;
     
     setTimeout(() => {
-      addBotMessage('Vui lòng nhập số điện thoại hợp lệ (VD: 0912345678) để tôi phân tích. Ở chế độ dùng thử, tôi chỉ có thể phân tích số điện thoại.')
-      isTyping.value = false
-    }, 1000)
+      addBotMessage(`
+        <p class="mb-2">Vui lòng nhập số điện thoại hợp lệ (VD: 0912345678) để tôi phân tích.</p>
+        <p>Ở chế độ dùng thử, tôi chỉ có thể phân tích số điện thoại.</p>
+      `);
+      isTyping.value = false;
+    }, 1000);
   }
 }
 
-// Set initial message with delay
+// Kiểm tra xem đã phân tích chưa khi trang load
 onMounted(() => {
-  // Clear session data if needed (uncomment to reset demo limit for testing)
-  // localStorage.removeItem(sessionKey)
+  // Nếu muốn reset để test, có thể bỏ comment dòng dưới
+  // localStorage.removeItem(sessionKey);
+  // hasAnalyzed.value = false;
+  
+  // Scroll xuống dưới khi mở trang
+  scrollToBottom();
 })
+
 </script>
 
 <style scoped>
