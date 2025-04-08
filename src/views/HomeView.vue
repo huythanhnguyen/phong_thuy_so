@@ -24,10 +24,11 @@
         <div class="flex flex-col lg:flex-row items-center">
           <div class="lg:w-1/2 mb-8 lg:mb-0">
             <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              Giải Mã Vận Mệnh Qua Bát Cục Linh Số
+              Giải Mã Vận Mệnh Qua Bát Cực Linh Số
             </h1>
             <p class="text-lg text-gray-700 mb-6">
-              Phương pháp cổ xưa kết hợp Kinh Dịch và Số Học giúp bạn tìm hiểu ý nghĩa sâu xa của các con số trong cuộc sống. Áp dụng cho số điện thoại, CCCD, biển số xe, tài khoản ngân hàng...
+              Phương pháp kết hợp Kinh Dịch và Số Học giúp hiểu ý nghĩa của các con số trong cuộc sống. 
+              Áp dụng cho số điện thoại, CCCD, số nhà, biển số xe, tài khoản ngân hàng...
             </p>
             <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
               <button @click="navigateTo('register')" class="btn-primary py-3 px-6 text-center">
@@ -110,7 +111,9 @@
             </div>
             <div class="ml-3">
               <p class="text-gray-700">
-                <span class="font-semibold">Tránh tai ương:</span> Nhiều số điện thoại và biển số xe có thể gây tai nạn, thậm chí dẫn đến huyết quang, tai ương lao ngục. Bát Cục Linh Số giúp tránh những con số xấu này.
+                <span class="font-semibold">Tránh tai ương:</span> 
+                Số điện thoại và biển số xe bạn là những con số quan trọng vì bạn sử dụng nó hàng ngày. 
+                Bát Cực Linh Số giúp bạn hiểu được nó và tránh được những ảnh hưởng xấu.
               </p>
             </div>
           </li>
@@ -121,16 +124,20 @@
     <div class="mt-12 bg-white rounded-lg shadow-lg p-8 max-w-3xl mx-auto">
       <h3 class="text-xl font-bold mb-4 text-center text-primary">Cùng Tương Hỗ Với Sức Mạnh Của Con Số</h3>
       <p class="text-gray-700 mb-4">
-        Số và người tương hỗ hấp dẫn - người tụ thọp Số, Số và người cũng giống như nhau. Người có đang từ trường gì thì sẽ hấp dẫn dãy Số đó, mà Số có dòng từ trường gì lại dễ dàng hấp dẫn hạng người đó.
+        Số và người hấp dẫn nhau,Người có đang từ trường gì thì sẽ hấp dẫn dãy Số đó.
+         Mà Số có dòng từ trường gì lại dễ dàng hấp dẫn hạng người đó nên hãy thử dùng công cụ này và chiêm nghiệm.
+         Bạn sẽ rất ngạc nhiên vì nó ứng thế nào.
       </p>
       <div class="bg-yellow-50 p-5 rounded-lg">
         <p class="font-semibold text-center text-gray-800 mb-2">Sự thật quan trọng</p>
         <p class="text-gray-700">
-          "Có được một dãy số vượng Tài hút Tài lại có thể thủ Tài thì không thể ngờ bạn sẽ thu được Tài Phú lớn, thành công, được quý nhân giúp đỡ. Thông qua tổ hợp và sắp xếp Số để đạt được hiệu quả cải thiện tài vận, hôn nhân, sự nghiệp, khỏe mạnh cũng như quan vận, quý nhân vận."
+          "Có được một dãy số vượng Tài hút Tài lại có thể thủ Tài thì bạn sẽ thu được Tài Phú lớn, thành công, được quý nhân giúp đỡ. 
+          Thông qua tổ hợp và sắp xếp Số để đạt được hiệu quả cải thiện tài vận, hôn nhân, sự nghiệp, khỏe mạnh cũng như quan vận, quý nhân vận."
         </p>
       </div>
       <p class="text-gray-700 mt-4">
-        Ai nắm giữ chân lý chính là nắm giữ cưỡng giá vận mệnh, ai có được tài phú người đó là người thành công. Muốn làm đại sự lại không có quý nhân nâng đỡ mà buồn khổ, phiền não, cảm thấy mình sinh không gặp thời, mệnh vận trêu người.
+        Hiểu được chân lý chính là nắm giữ vận mệnh, thành công. 
+        Ngược lại muốn làm đại sự lại không có quý nhân nâng đỡ mà buồn khổ, phiền não, cảm thấy mình không gặp thời, mệnh vận trêu người.
       </p>
     </div>
   </div>
@@ -146,7 +153,7 @@
               <font-awesome-icon icon="mobile-alt" />
             </div>
             <h3 class="feature-title">Số Điện Thoại</h3>
-            <p class="feature-description">Phân tích từng cặp số để tìm ra sự cân bằng giữa tứ cát tứ hung, giúp thu hút tài lộc, quý nhân và cơ hội nghề nghiệp.</p>
+            <p class="feature-description">Phân tích từng cặp số để tìm ra sự cân bằng giữa các sao tốt xấu, giúp thu hút tài lộc, quý nhân và cơ hội nghề nghiệp.</p>
           </div>
           <div class="feature-card">
             <div class="feature-icon">
@@ -160,7 +167,8 @@
               <font-awesome-icon icon="car" />
             </div>
             <h3 class="feature-title">Biển Số Xe</h3>
-            <p class="feature-description">Phân tích biển số xe để tránh tai nạn, sự cố và mang lại may mắn trong di chuyển. Đặc biệt quan trọng với người thường xuyên lái xe.</p>
+            <p class="feature-description">Phân tích biển số xe để tránh tai nạn, sự cố và mang lại may mắn trong di chuyển. 
+              Đặc biệt quan trọng với người thường xuyên lái xe.</p>
           </div>
           <div class="feature-card">
             <div class="feature-icon">
@@ -230,62 +238,66 @@
     </section>
 
     <!-- Demo Chat Section -->
-    <section id="demo-chat" class="py-16 bg-gray-50">
-      <div class="container mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center mb-4">Dùng thử ngay</h2>
-        <p class="text-center text-gray-600 mb-10 max-w-2xl mx-auto">
-          Nhập số điện thoại để phân tích hoặc đặt câu hỏi về ý nghĩa của các con số. 
-          Trải nghiệm phân tích cơ bản không cần đăng nhập!
-        </p>
-        
-        <div class="max-w-2xl mx-auto">
-          <div class="bg-white rounded-lg shadow-md overflow-hidden">
-            <!-- Chat Messages -->
-            <div class="h-80 overflow-y-auto p-4 bg-gray-50">
-              <div class="mb-4 max-w-[80%] rounded-lg p-3 bg-white shadow-sm ml-0 mr-auto">
-                Xin chào! Tôi là trợ lý phân tích Bát Cục Linh Số. Bạn có thể nhập số điện thoại để phân tích hoặc đặt câu hỏi về ý nghĩa các con số.
-              </div>
-              
-              <div class="mb-4 max-w-[80%] rounded-lg p-3 bg-primary-light mr-0 ml-auto">
-                0912 345 678
-              </div>
-              
-              <div class="mb-4 max-w-[80%] rounded-lg p-3 bg-white shadow-sm ml-0 mr-auto">
-                <p class="mb-2"><strong>Phân tích sơ bộ cho số 0912345678:</strong></p>
-                <p class="mb-1">• Tổng: 9 cặp số (5 cát tinh, 4 hung tinh)</p>
-                <p class="mb-1">• Tỷ lệ: 55% cát - 45% hung (Thiên về cát)</p>
-                <p class="mb-1">• Ba số cuối (678): Bao gồm 2 cát tinh, mang lại may mắn</p>
-                <p class="mb-2">• Số này phù hợp cho mục đích công việc và phát triển sự nghiệp</p>
-                <p><em>Đăng ký để xem phân tích chi tiết và ý nghĩa từng cặp số!</em></p>
-              </div>
-            </div>
-            
-            <!-- Chat Input -->
-            <div class="border-t border-gray-200 p-4">
-              <div class="flex">
-                <input 
-                  type="text" 
-                  v-model="userInput" 
-                  class="flex-1 border border-gray-300 rounded-l-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary" 
-                  placeholder="Nhập số điện thoại hoặc đặt câu hỏi..."
-                  @keyup.enter="sendMessage"
-                />
-                <button 
-                  @click="sendMessage" 
-                  class="bg-primary text-white px-4 py-2 rounded-r-lg hover:bg-primary-dark"
-                  :disabled="!userInput.trim()"
-                >
-                  <font-awesome-icon icon="paper-plane" />
-                </button>
-              </div>
-              <p class="text-xs text-gray-500 mt-2">
-                Nhập số điện thoại hoặc câu hỏi như "Số 8 có ý nghĩa gì trong phong thủy?"
-              </p>
-            </div>
+<section id="demo-chat" class="py-16 bg-gray-50">
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center mb-4">Dùng thử ngay</h2>
+    <p class="text-center text-gray-600 mb-10 max-w-2xl mx-auto">
+      Nhập số điện thoại để trải nghiệm phân tích cơ bản. Mỗi phiên chỉ được phân tích miễn phí một số!
+    </p>
+    
+    <div class="max-w-2xl mx-auto">
+      <div class="bg-white rounded-lg shadow-md overflow-hidden">
+        <!-- Chat Messages -->
+        <div class="h-80 overflow-y-auto p-4 bg-gray-50" ref="chatContainer">
+          <div class="mb-4 max-w-[80%] rounded-lg p-3 bg-white shadow-sm ml-0 mr-auto">
+            Xin chào! Tôi là trợ lý phân tích Bát Cục Linh Số. Bạn có thể nhập số điện thoại để phân tích hoặc đặt câu hỏi về ý nghĩa các con số.
+          </div>
+          
+          <div v-for="(message, index) in chatMessages" :key="index" 
+            :class="['mb-4 max-w-[80%] rounded-lg p-3', 
+              message.isUser ? 'bg-primary-light mr-0 ml-auto' : 'bg-white shadow-sm ml-0 mr-auto'
+            ]">
+            <div v-if="message.isUser">{{ message.content }}</div>
+            <div v-else v-html="message.content"></div>
+          </div>
+          
+          <div v-if="isTyping" class="flex space-x-2 p-3 bg-white shadow-sm rounded-lg ml-0 mr-auto mb-4 w-16">
+            <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
+            <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
+            <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 0.4s"></div>
           </div>
         </div>
+        
+        <!-- Chat Input -->
+        <div class="border-t border-gray-200 p-4">
+          <div class="flex">
+            <input
+              type="text"
+              v-model="userInput"
+              class="flex-1 border border-gray-300 rounded-l-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
+              placeholder="Nhập số điện thoại để phân tích..."
+              @keyup.enter="sendMessage"
+              :disabled="isTyping || hasReachedLimit"
+            />
+            <button
+              @click="sendMessage"
+              class="bg-primary text-white px-4 py-2 rounded-r-lg hover:bg-primary-dark"
+              :disabled="!userInput.trim() || isTyping || hasReachedLimit"
+            >
+              <font-awesome-icon icon="paper-plane" />
+            </button>
+          </div>
+          <p v-if="hasReachedLimit" class="text-xs text-red-500 mt-2">
+            Bạn đã sử dụng lượt phân tích miễn phí. Vui lòng đăng nhập để tiếp tục!
+          </p>
+          <p v-else class="text-xs text-gray-500 mt-2">
+            Nhập số điện thoại của bạn (VD: 0912345678) để nhận phân tích cơ bản.
+          </p>
+        </div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
     <!-- Trường Hợp Thành Công Section - MỚI -->
     <section class="py-16 bg-white">
@@ -470,56 +482,179 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, nextTick, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAuthStore } from '@/stores/auth'
+import analysisService from '@/services/analysisService'
 
 const router = useRouter()
 const authStore = useAuthStore()
 
-// Computed
-const currentYear = computed(() => new Date().getFullYear())
-
-// Chat component
+// Chat variables
 const userInput = ref('')
 const isTyping = ref(false)
+const chatMessages = ref([])
+const chatContainer = ref(null)
+const sessionKey = 'demo_chat_analyzed'
 
-// Methods
-const navigateTo = (target) => {
-  if (target === 'register') {
-    router.push({ name: 'login', query: { tab: 'register' } })
-  } else if (target === 'bat-cuc-linh-so') {
-    router.push({ name: 'guides', params: { slug: 'bat-cuc-linh-so' } })
-  } else {
-    router.push({ name: target })
+// Computed property to check if user has reached limit
+const hasReachedLimit = computed(() => {
+  return localStorage.getItem(sessionKey) === 'true'
+})
+
+// Scroll to bottom of chat
+const scrollToBottom = async () => {
+  await nextTick()
+  if (chatContainer.value) {
+    chatContainer.value.scrollTop = chatContainer.value.scrollHeight
   }
 }
 
-const scrollToChat = () => {
-  const element = document.getElementById('demo-chat')
-  if (element) {
-    element.scrollIntoView({ behavior: 'smooth' })
+watch(chatMessages, scrollToBottom)
+watch(isTyping, scrollToBottom)
+
+// Add a message from user
+const addUserMessage = (text) => {
+  chatMessages.value.push({
+    isUser: true,
+    content: text
+  })
+  scrollToBottom()
+}
+
+// Add a message from bot
+const addBotMessage = (html) => {
+  chatMessages.value.push({
+    isUser: false,
+    content: html
+  })
+  scrollToBottom()
+}
+
+// Check if input is a phone number
+const isPhoneNumber = (text) => {
+  const cleaned = text.replace(/\D/g, '')
+  return /^0\d{9,10}$/.test(cleaned)
+}
+
+// Format analysis results for display
+const formatAnalysisResult = (data) => {
+  try {
+    // This would be customized based on your actual API response structure
+    const analysis = data.result || data
+    
+    // Extract what we need for the demo (overview, personality, last pair)
+    let content = `<p class="mb-2"><strong>Phân tích sơ bộ số ${data.phoneNumber || ''}:</strong></p>`
+    
+    // Overview
+    if (analysis.energyLevel) {
+      const catCount = analysis.energyLevel.cat || 0
+      const hungCount = Math.abs(analysis.energyLevel.hung || 0)
+      const total = catCount + hungCount
+      const catPercent = total > 0 ? Math.round((catCount / total) * 100) : 0
+      const hungPercent = 100 - catPercent
+      
+      content += `<p class="mb-1">• Tổng: ${total} cặp số (${catCount} cát tinh, ${hungCount} hung tinh)</p>`
+      content += `<p class="mb-1">• Tỷ lệ: ${catPercent}% cát - ${hungPercent}% hung (${catPercent >= 70 ? 'Thiên về cát' : (hungPercent >= 70 ? 'Thiên về hung' : 'Cân bằng')})</p>`
+    }
+    
+    // Last pair analysis
+    if (analysis.starSequence && analysis.starSequence.length > 0) {
+      const lastStar = analysis.starSequence[analysis.starSequence.length - 1]
+      content += `<p class="mb-1">• Cặp số cuối: ${lastStar.originalPair || ''} - ${lastStar.name || ''} (${lastStar.nature === 'Cát' ? 'Tốt' : 'Xấu'})</p>`
+    }
+    
+    // Summary
+    content += `<p class="mb-2">• Số này ${analysis.balance === 'CAT_HEAVY' ? 'khá thuận lợi' : (analysis.balance === 'HUNG_HEAVY' ? 'có nhiều thách thức' : 'khá cân bằng')} cho mục đích công việc và phát triển cá nhân</p>`
+    
+    // Call to action
+    content += `<p class="mt-4 text-primary font-semibold">Đăng ký để xem phân tích chi tiết và ý nghĩa từng cặp số!</p>`
+    
+    return content
+  } catch (error) {
+    console.error('Error formatting analysis:', error)
+    return 'Có lỗi xảy ra khi phân tích số. Vui lòng thử lại sau!'
   }
 }
 
-const sendMessage = () => {
-  if (!userInput.value.trim()) return
+// Send user message and get response
+const sendMessage = async () => {
+  if (!userInput.value.trim() || isTyping.value || hasReachedLimit.value) return
   
-  // Clear input
+  const text = userInput.value.trim()
   userInput.value = ''
+  addUserMessage(text)
   
-  // Redirect to login
-  setTimeout(() => {
-    alert('Đăng ký/đăng nhập để sử dụng tính năng phân tích chi tiết!')
-    navigateTo('login')
-  }, 1000)
+  // Only process phone numbers for the demo
+  if (isPhoneNumber(text)) {
+    if (hasReachedLimit.value) {
+      addBotMessage('Bạn đã sử dụng lượt phân tích miễn phí. Vui lòng <a href="/login" class="text-primary font-semibold">đăng nhập</a> để tiếp tục!')
+      return
+    }
+    
+    isTyping.value = true
+    
+    try {
+      // Call the actual API
+      const cleanedNumber = text.replace(/\D/g, '')
+      const result = await analysisService.analyzePhoneNumber(cleanedNumber)
+      
+      // Delay for natural typing feeling
+      setTimeout(() => {
+        if (result.success) {
+          // Success response
+          addBotMessage(formatAnalysisResult(result.data || result))
+          
+          // Mark as analyzed in this session
+          localStorage.setItem(sessionKey, 'true')
+          
+          // Add login reminder
+          setTimeout(() => {
+            addBotMessage('Bạn đã sử dụng hết lượt phân tích miễn phí. <a href="/login" class="text-primary font-semibold">Đăng nhập</a> để xem phân tích chi tiết hơn và phân tích thêm nhiều số khác!')
+          }, 2000)
+        } else {
+          // Error response
+          addBotMessage(`Rất tiếc, tôi không thể phân tích số này. Lỗi: ${result.error || 'Không xác định'}`)
+        }
+        isTyping.value = false
+      }, 1500)
+    } catch (error) {
+      console.error('Error analyzing phone number:', error)
+      
+      // Fallback to dummy analysis if API fails
+      setTimeout(() => {
+        addBotMessage('Kết nối đến máy chủ gặp sự cố. Tôi sẽ cung cấp một phân tích mẫu:<br><br>' + 
+          '<p class="mb-2"><strong>Phân tích sơ bộ số ' + text + ':</strong></p>' +
+          '<p class="mb-1">• Tổng: 9 cặp số (5 cát tinh, 4 hung tinh)</p>' +
+          '<p class="mb-1">• Tỷ lệ: 55% cát - 45% hung (Thiên về cát)</p>' +
+          '<p class="mb-1">• Cặp số cuối: 78 - Sinh Khí (Tốt)</p>' +
+          '<p class="mb-2">• Số này khá thuận lợi cho mục đích công việc và phát triển cá nhân</p>' +
+          '<p class="mt-4 text-primary font-semibold">Đăng ký để xem phân tích chi tiết và ý nghĩa từng cặp số!</p>')
+        
+        localStorage.setItem(sessionKey, 'true')
+        
+        setTimeout(() => {
+          addBotMessage('Bạn đã sử dụng hết lượt phân tích miễn phí. <a href="/login" class="text-primary font-semibold">Đăng nhập</a> để xem phân tích chi tiết hơn và phân tích thêm nhiều số khác!')
+        }, 2000)
+        
+        isTyping.value = false
+      }, 1500)
+    }
+  } else {
+    // Handle non-phone number inputs
+    isTyping.value = true
+    
+    setTimeout(() => {
+      addBotMessage('Vui lòng nhập số điện thoại hợp lệ (VD: 0912345678) để tôi phân tích. Ở chế độ dùng thử, tôi chỉ có thể phân tích số điện thoại.')
+      isTyping.value = false
+    }, 1000)
+  }
 }
 
-// Redirect to app if already logged in
+// Set initial message with delay
 onMounted(() => {
-  if (authStore.isAuthenticated) {
-    router.push({ name: 'app' })
-  }
+  // Clear session data if needed (uncomment to reset demo limit for testing)
+  // localStorage.removeItem(sessionKey)
 })
 </script>
 
