@@ -485,9 +485,53 @@
 import { ref, computed, onMounted, nextTick, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import axios from 'axios'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { 
+  faPhoneAlt, 
+  faUser, 
+  faQuoteLeft, 
+  faEnvelope, 
+  faMapMarkerAlt,
+  faMobileAlt,
+  faIdCard,
+  faCar,
+  faCreditCard,
+  faCheck,
+  faPaperPlane
+} from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+library.add(
+  faPhoneAlt, 
+  faUser, 
+  faQuoteLeft, 
+  faEnvelope, 
+  faMapMarkerAlt,
+  faMobileAlt,
+  faIdCard,
+  faCar,
+  faCreditCard,
+  faCheck,
+  faPaperPlane
+)
 
 const router = useRouter()
 const API_URL = 'https://chatbotsdtapi.onrender.com/api'
+
+// Computed properties
+const currentYear = computed(() => new Date().getFullYear())
+
+// Navigation functions
+const navigateTo = (route) => {
+  router.push({ name: route })
+}
+
+const scrollToChat = () => {
+  const chatSection = document.getElementById('demo-chat')
+  if (chatSection) {
+    chatSection.scrollIntoView({ behavior: 'smooth' })
+  }
+}
 
 // Chat variables
 const userInput = ref('')
