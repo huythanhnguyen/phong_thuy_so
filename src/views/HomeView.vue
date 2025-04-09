@@ -17,7 +17,7 @@
             </p>
             <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
               <button @click="navigateTo('register')" class="btn-primary py-3 px-6 text-center">
-                Đăng ký miễn phí
+                Đăng ký ngay
               </button>
               <button @click="scrollToChat" class="btn-outline py-3 px-6 text-center">
                 Dùng thử ngay
@@ -412,57 +412,8 @@
       </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-gray-300 py-12">
-      <div class="container mx-auto px-4">
-        <div class="grid md:grid-cols-4 gap-8">
-          <div>
-            <h3 class="text-lg font-semibold mb-4">Phong Thủy Số</h3>
-            <p class="text-sm opacity-75">
-              Giải mã ý nghĩa con số trong cuộc sống với phương pháp Bát Cục Linh Số - Tứ Cát Tứ Hung, giúp bạn tận dụng năng lượng tích cực và tránh năng lượng tiêu cực.
-            </p>
-          </div>
-          <div>
-            <h3 class="text-lg font-semibold mb-4">Liên kết</h3>
-            <ul class="space-y-2">
-              <li><a href="#" class="hover:text-white">Trang chủ</a></li>
-              <li><a href="#" class="hover:text-white">Dịch vụ</a></li>
-              <li><a href="#" class="hover:text-white">Giới thiệu</a></li>
-              <li><a href="#" class="hover:text-white">Điều khoản sử dụng</a></li>
-            </ul>
-          </div>
-          <div>
-            <h3 class="text-lg font-semibold mb-4">Dịch vụ</h3>
-            <ul class="space-y-2">
-              <li><a href="#" class="hover:text-white">Phân tích số điện thoại</a></li>
-              <li><a href="#" class="hover:text-white">Phân tích biển số xe</a></li>
-              <li><a href="#" class="hover:text-white">Phân tích CCCD</a></li>
-              <li><a href="#" class="hover:text-white">Phân tích số tài khoản</a></li>
-            </ul>
-          </div>
-          <div>
-            <h3 class="text-lg font-semibold mb-4">Liên hệ</h3>
-            <ul class="space-y-2">
-              <li class="flex items-center">
-                <font-awesome-icon icon="envelope" class="mr-2" />
-                <a href="mailto:contact@phongthuyso.vn" class="hover:text-white">contact@phongthuyso.vn</a>
-              </li>
-              <li class="flex items-center">
-                <font-awesome-icon icon="phone" class="mr-2" />
-                <a href="tel:+84123456789" class="hover:text-white">0123 456 789</a>
-              </li>
-              <li class="flex items-center">
-                <font-awesome-icon icon="map-marker-alt" class="mr-2" />
-                <span>Hà Nội, Việt Nam</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="border-t border-gray-700 mt-10 pt-6 text-sm text-center">
-          &copy; {{ currentYear }} Phong Thủy Số - Mọi quyền được bảo lưu
-        </div>
-      </div>
-    </footer>
+    <!-- Sử dụng component Footer -->
+    <Footer />
   </div>
 </template>
 
@@ -472,35 +423,39 @@ import { useRouter } from 'vue-router'
 import axios from 'axios'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { 
-  faPhoneAlt, 
-  faUser, 
-  faQuoteLeft, 
-  faEnvelope, 
-  faMapMarkerAlt,
   faMobileAlt,
   faIdCard,
   faCar,
   faCreditCard,
   faCheck,
-  faPaperPlane
+  faQuoteLeft,
+  faUser,
+  faPhone,
+  faEnvelope,
+  faMapMarkerAlt,
+  faPaperPlane,
+  faChevronDown,
+  faInfoCircle
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import Header from '@/components/layout/Header.vue'
 import Footer from '@/components/layout/Footer.vue'
-// Đã import Footer từ components/layout/Footer.vue
 
+// Thêm các icon cần thiết
 library.add(
-  faPhoneAlt, 
-  faUser, 
-  faQuoteLeft, 
-  faEnvelope, 
-  faMapMarkerAlt,
   faMobileAlt,
   faIdCard,
   faCar,
   faCreditCard,
   faCheck,
-  faPaperPlane
+  faQuoteLeft,
+  faUser,
+  faPhone,
+  faEnvelope,
+  faMapMarkerAlt,
+  faPaperPlane,
+  faChevronDown,
+  faInfoCircle
 )
 
 const router = useRouter()
@@ -599,96 +554,6 @@ const formatAnalysisResult = (data) => {
       content += `<p class="mb-1">• Cặp số cuối: <span class="font-medium">${lastStar.originalPair || ''}</span> - 
         <span class="${starClass} font-semibold">${lastStar.name || ''}</span> 
         (${lastStar.nature === 'Cát' ? 'Cát tinh' : 'Hung tinh'})</p>`;
-        
-      // Thêm dữ liệu mẫu
-      const sampleData = {
-        success: true,
-        phoneNumber: cleanedNumber,
-        demoResult: true,
-        analysisData: {
-          energyLevel: { cat: 3, hung: 2, total: 5 },
-          balance: "BALANCED",
-          starSequence: [
-            { 
-              originalPair: "67", 
-              name: "Sinh Khí", 
-              nature: "Cát", 
-              energyLevel: 3
-            }
-          ]
-        }
-      };
-
-      try {
-        // Gọi API thực tế để phân tích số
-        const cleanedNumber = text.replace(/\D/g, '');
-        let useRealAPI = true;
-        
-        if (useRealAPI) {
-          const response = await axios.post(`${API_URL}/analyze`, {
-            phoneNumber: cleanedNumber
-          });
-          
-          // Xử lý phản hồi từ API
-          if (response.data && response.data.success) {
-            // Hiển thị kết quả phân tích
-            addBotMessage(formatAnalysisResult(response.data));
-            
-            // Đánh dấu đã phân tích trong session này
-            localStorage.setItem(sessionKey, 'true');
-            hasAnalyzed.value = true;
-          } else {
-            // Xử lý lỗi từ API
-            addBotMessage(`Rất tiếc, tôi không thể phân tích số này. ${response.data.error || 'Vui lòng thử lại sau.'}`);
-          }
-        } else {
-          // Sử dụng dữ liệu mẫu thay vì gọi API thật
-          addBotMessage(formatAnalysisResult(sampleData));
-          localStorage.setItem(sessionKey, 'true');
-          hasAnalyzed.value = true;
-        }
-      } catch (error) {
-        // Xử lý lỗi...
-        
-        // Nếu có lỗi, cân nhắc sử dụng dữ liệu mẫu
-        console.log('Using sample data due to API error');
-        addBotMessage(formatAnalysisResult(sampleData));
-        localStorage.setItem(sessionKey, 'true');
-        hasAnalyzed.value = true;
-      }
-        
-      try {
-        // Code hiện tại
-      } catch (error) {
-        console.error('Error analyzing phone number:', error);
-        
-        // Hiển thị thông tin lỗi chi tiết hơn
-        if (error.response) {
-          // Server trả về lỗi với status code
-          console.error('Server error data:', error.response.data);
-          console.error('Server error status:', error.response.status);
-          addBotMessage(`
-            <p class="mb-2">Có lỗi xảy ra: ${error.response.status}. ${error.response.data.error || ''}</p>
-            <p>Vui lòng thử lại sau hoặc đăng nhập để sử dụng phiên bản đầy đủ.</p>
-          `);
-        } else if (error.request) {
-          // Request được gửi nhưng không nhận được phản hồi
-          console.error('No response received:', error.request);
-          addBotMessage(`
-            <p class="mb-2">Không nhận được phản hồi từ máy chủ. Máy chủ có thể đang bảo trì.</p>
-            <p>Vui lòng thử lại sau.</p>
-          `);
-        } else {
-          // Lỗi khi cấu hình request
-          console.error('Error message:', error.message);
-          addBotMessage(`
-            <p class="mb-2">Lỗi kết nối: ${error.message}</p>
-            <p>Vui lòng kiểm tra kết nối và thử lại.</p>
-          `);
-        }
-      } finally {
-        isTyping.value = false;
-      }
     }
     
     // Thêm một phần trích dẫn từ phân tích (nếu có)
@@ -696,6 +561,7 @@ const formatAnalysisResult = (data) => {
       const shortAnalysis = data.analysis.split('.').slice(0, 2).join('.') + '.';
       content += `<p class="my-2 italic text-gray-600">"${shortAnalysis}"</p>`;
     }
+    
     // Thêm thông báo demo nếu có
     if (data.demoResult) {
       content += `<p class="my-2 text-amber-600 font-medium">
@@ -704,8 +570,6 @@ const formatAnalysisResult = (data) => {
       </p>`;
     }
     
-    // Khai báo API URL cho demo
-    const API_URL = 'https://chatbotsdtapi.onrender.com/api/demo';
     // Call to action
     content += `<p class="mt-4 pt-2 border-t border-gray-200">
       <span class="text-primary font-semibold">Đăng ký để xem phân tích chi tiết và ý nghĩa từng cặp số!</span>
@@ -731,7 +595,7 @@ const sendMessage = async () => {
     isTyping.value = true;
     
     try {
-      // Gọi API thực tế để phân tích số
+      // Gọi API để phân tích số
       const cleanedNumber = text.replace(/\D/g, '');
       const response = await axios.post(`${API_URL}/analyze`, {
         phoneNumber: cleanedNumber
@@ -745,10 +609,6 @@ const sendMessage = async () => {
         // Đánh dấu đã phân tích trong session này
         localStorage.setItem(sessionKey, 'true');
         hasAnalyzed.value = true;
-        
-        const response = await axios.post(`${API_URL}/analyze`, {
-          phoneNumber: cleanedNumber
-        });
       } else {
         // Xử lý lỗi từ API
         addBotMessage(`Rất tiếc, tôi không thể phân tích số này. ${response.data.error || 'Vui lòng thử lại sau.'}`);
@@ -756,11 +616,30 @@ const sendMessage = async () => {
     } catch (error) {
       console.error('Error analyzing phone number:', error);
       
-      // Thông báo lỗi kết nối
-      addBotMessage(`
-        <p class="mb-2">Không thể kết nối đến máy chủ phân tích. Vui lòng thử lại sau hoặc đăng nhập để sử dụng phiên bản đầy đủ.</p>
-        <a href="/login" class="text-primary font-semibold">Đăng nhập ngay</a>
-      `);
+      // Hiển thị thông tin lỗi chi tiết hơn
+      if (error.response) {
+        // Server trả về lỗi với status code
+        console.error('Server error data:', error.response.data);
+        console.error('Server error status:', error.response.status);
+        addBotMessage(`
+          <p class="mb-2">Có lỗi xảy ra: ${error.response.status}. ${error.response.data.error || ''}</p>
+          <p>Vui lòng thử lại sau hoặc đăng nhập để sử dụng phiên bản đầy đủ.</p>
+        `);
+      } else if (error.request) {
+        // Request được gửi nhưng không nhận được phản hồi
+        console.error('No response received:', error.request);
+        addBotMessage(`
+          <p class="mb-2">Không nhận được phản hồi từ máy chủ. Máy chủ có thể đang bảo trì.</p>
+          <p>Vui lòng thử lại sau.</p>
+        `);
+      } else {
+        // Lỗi khi cấu hình request
+        console.error('Error message:', error.message);
+        addBotMessage(`
+          <p class="mb-2">Lỗi kết nối: ${error.message}</p>
+          <p>Vui lòng kiểm tra kết nối và thử lại.</p>
+        `);
+      }
     } finally {
       isTyping.value = false;
     }
@@ -780,14 +659,9 @@ const sendMessage = async () => {
 
 // Kiểm tra xem đã phân tích chưa khi trang load
 onMounted(() => {
-  // Nếu muốn reset để test, có thể bỏ comment dòng dưới
-  // localStorage.removeItem(sessionKey);
-  // hasAnalyzed.value = false;
-  
   // Scroll xuống dưới khi mở trang
   scrollToBottom();
 })
-
 </script>
 
 <style scoped>
