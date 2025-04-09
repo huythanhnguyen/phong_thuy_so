@@ -1,22 +1,7 @@
 <template>
   <div class="min-h-screen flex flex-col">
-    <!-- Header -->
-    <header class="bg-white shadow-sm sticky top-0 z-10">
-      <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-        <div class="flex items-center space-x-2">
-          <font-awesome-icon icon="phone-alt" class="text-primary text-xl" />
-          <span class="font-semibold text-lg text-gray-800">Phong Thủy Số</span>
-        </div>
-        <div class="flex space-x-3">
-          <button @click="navigateTo('login')" class="auth-btn login-btn hover:bg-black">
-            Đăng nhập
-          </button>
-          <button @click="navigateTo('register')" class="auth-btn signup-btn hover:bg-gray-100">
-            Đăng ký
-          </button>
-        </div>
-      </div>
-    </header>
+    <!-- Sử dụng component Header -->
+    <Header />
 
     <!-- Hero Section -->
     <section class="bg-gradient-to-r from-primary-light to-blue-50 py-16">
@@ -500,6 +485,9 @@ import {
   faPaperPlane
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import Header from '@/components/layout/Header.vue'
+import Footer from '@/components/layout/Footer.vue'
+// Đã import Footer từ components/layout/Footer.vue
 
 library.add(
   faPhoneAlt, 
@@ -516,7 +504,7 @@ library.add(
 )
 
 const router = useRouter()
-const API_URL = 'https://chatbotsdtapi.onrender.com/api'
+const API_URL = 'https://chatbotsdtapi.onrender.com/api/demo'
 
 // Computed properties
 const currentYear = computed(() => new Date().getFullYear())
@@ -618,7 +606,16 @@ const formatAnalysisResult = (data) => {
       const shortAnalysis = data.analysis.split('.').slice(0, 2).join('.') + '.';
       content += `<p class="my-2 italic text-gray-600">"${shortAnalysis}"</p>`;
     }
+    // Thêm thông báo demo nếu có
+    if (data.demoResult) {
+      content += `<p class="my-2 text-amber-600 font-medium">
+        <font-awesome-icon icon="info-circle" class="mr-1" /> 
+        Đây là kết quả phân tích demo, chỉ hiển thị một phần thông tin.
+      </p>`;
+    }
     
+    // Khai báo API URL cho demo
+    const API_URL = 'https://chatbotsdtapi.onrender.com/api/demo';
     // Call to action
     content += `<p class="mt-4 pt-2 border-t border-gray-200">
       <span class="text-primary font-semibold">Đăng ký để xem phân tích chi tiết và ý nghĩa từng cặp số!</span>
@@ -659,15 +656,9 @@ const sendMessage = async () => {
         localStorage.setItem(sessionKey, 'true');
         hasAnalyzed.value = true;
         
-        // Yêu cầu đăng nhập sau vài giây
-        setTimeout(() => {
-          addBotMessage(`<p class="text-center">
-            <span class="block mb-3">Bạn đã sử dụng hết lượt phân tích miễn phí.</span>
-            <a href="/login" class="inline-block bg-primary text-white py-2 px-4 rounded-lg hover:bg-primary-dark transition-colors">
-              Đăng nhập để xem chi tiết hơn
-            </a>
-          </p>`);
-        }, 3000);
+        const response = await axios.post(`${API_URL}/analyze`, {
+          phoneNumber: cleanedNumber
+        });
       } else {
         // Xử lý lỗi từ API
         addBotMessage(`Rất tiếc, tôi không thể phân tích số này. ${response.data.error || 'Vui lòng thử lại sau.'}`);
