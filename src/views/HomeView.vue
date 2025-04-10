@@ -619,11 +619,12 @@ const sendMessage = async () => {
       // Hiển thị thông tin lỗi chi tiết hơn
       if (error.response) {
         // Server trả về lỗi với status code
-        console.error('Server error data:', error.response.data);
-        console.error('Server error status:', error.response.status);
+        const serverErrorData = error.response.data || {};
+        console.error('Server error status:', error.response.status);        
+        console.error('Server error data:', serverErrorData);
         addBotMessage(`
-          <p class="mb-2">Có lỗi xảy ra: ${error.response.status}. ${error.response.data.error || ''}</p>
-          <p>Vui lòng thử lại sau hoặc đăng nhập để sử dụng phiên bản đầy đủ.</p>
+          <p class="mb-2">Có lỗi xảy ra: ${error.response.status}. ${serverErrorData.error || 'Lỗi không xác định.'}</p>
+          <p>Vui lòng thử lại sau hoặc đăng nhập để sử dụng đầy đủ chức năng.</p>
         `);
       } else if (error.request) {
         // Request được gửi nhưng không nhận được phản hồi
