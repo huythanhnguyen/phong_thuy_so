@@ -12,19 +12,19 @@
           <div>
             <h3 class="text-lg font-semibold mb-4">Liên kết</h3>
             <ul class="space-y-2">
-              <li><router-link to="/" class="hover:text-white">Trang chủ</router-link></li>
-              <li><a href="#" class="hover:text-white">Dịch vụ</a></li>
-              <li><a href="#" class="hover:text-white">Giới thiệu</a></li>
-              <li><a href="#" class="hover:text-white">Điều khoản sử dụng</a></li>
+              <li><router-link to="/" class="hover:text-white">Giới thiệu</router-link></li>
+              <li><router-link to="/guides/bat-cuc-linh-so" class="hover:text-white">Bát Cực Linh Số</router-link></li>
+              <li><router-link to="/pricing" class="hover:text-white">Giá cả</router-link></li>
+              <li><router-link to="/tc" class="hover:text-white">Điều khoản sử dụng</router-link></li>
             </ul>
           </div>
           <div>
             <h3 class="text-lg font-semibold mb-4">Dịch vụ</h3>
             <ul class="space-y-2">
-              <li><a href="#" class="hover:text-white">Phân tích số điện thoại</a></li>
-              <li><a href="#" class="hover:text-white">Tư vấn chọn số</a></li>
-              <li><a href="#" class="hover:text-white">Phân tích căn cước công dân</a></li>
-              <li><a href="#" class="hover:text-white">Phân tích số tài khoản</a></li>
+              <li><router-link to="/guides/chon-so-dien-thoai" class="hover:text-white">Chọn Số Điện Thoại</router-link></li>
+              <li><router-link to="/guides/mat-khau" class="hover:text-white">Tư Vấn Chọn Mật Khẩu</router-link></li>
+              <li><router-link to="/guides/can-cuoc-cong-dan" class="hover:text-white">Phân Tích Căn Cước Công Dân</router-link></li>
+              <li><router-link to="/guides/chon-so-ngan-hang" class="hover:text-white">Phân Tích Số Tài Khoản</router-link></li>
             </ul>
           </div>
           <div>

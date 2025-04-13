@@ -4,6 +4,7 @@ import LoginView from '../views/LoginView.vue'
 import AppView from '../views/AppView.vue'
 import OurService from '../views/OurService.vue'
 import Pricing from '../views/Pricing.vue'
+import TC from '../views/TC.vue'
 
 // Thêm import cho các trang con
 import BatCucLinhSo from '../views/guides/BatCucLinhSo.vue'
@@ -66,6 +67,11 @@ const router = createRouter({
       path: '/pricing',
       name: 'pricing',
       component: Pricing
+    },
+    {
+      path: '/tc',
+      name: 'tc',
+      component: TC
     }
   ]
 })
