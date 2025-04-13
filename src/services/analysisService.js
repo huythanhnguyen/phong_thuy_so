@@ -8,11 +8,37 @@ const analysisService = {
    */
   async analyzePhoneNumber(phoneNumber) {
     try {
-      const response = await apiClient.post(API_CONFIG.ANALYSIS.ANALYZE, { phoneNumber })
-      return response
+      console.log('Sending phone analysis request with:', phoneNumber);
+      const response = await apiClient.post(API_CONFIG.ANALYSIS.ANALYZE, { phoneNumber });
+      console.log('Phone analysis response:', response);
+
+      if (!response.success) {
+        throw new Error(response.message || 'Không thể phân tích số điện thoại');
+      }
+      
+      // Đảm bảo có trường content để hiển thị
+      if (!response.content) {
+        // Nếu có geminiResponse từ backend thì sử dụng nó
+        if (response.analysis && response.analysis.geminiResponse) {
+          response.content = response.analysis.geminiResponse;
+        } else {
+          response.content = 'Đã phân tích số điện thoại.';
+        }
+      }
+
+      // Đảm bảo có trường analysisData
+      if (!response.analysisData && response.analysis) {
+        response.analysisData = response.analysis;
+      }
+      
+      return response;
     } catch (error) {
       console.error('Error analyzing phone number:', error)
-      return { success: false, message: error.message }
+      return { 
+        success: false, 
+        message: error.message,
+        error: error.message
+      }
     }
   },
   
@@ -105,6 +131,52 @@ const analysisService = {
     } catch (error) {
       console.error('Error getting recent analyses:', error)
       return { success: false, message: error.message, data: [] }
+    }
+  },
+
+  /**
+   * Lấy số câu hỏi còn lại của người dùng trong ngày
+   * @returns {Promise} - Số câu hỏi còn lại
+   */
+  async getRemainingQuestions() {
+    try {
+      const response = await apiClient.get(API_CONFIG.USER.REMAINING_QUESTIONS)
+      return response
+    } catch (error) {
+      console.error('Error getting remaining questions:', error)
+      return { 
+        success: false, 
+        message: 'Không thể lấy thông tin số câu hỏi còn lại',
+        error: error.message
+      }
+    }
+  },
+
+  /**
+   * Lấy thông tin người dùng từ số điện thoại
+   * @param {string} phoneNumber - Số điện thoại
+   * @returns {Promise} - Thông tin người dùng
+   */
+  async getUserInfoFromPhoneNumber(phoneNumber) {
+    try {
+      const response = await apiClient.get(API_CONFIG.USER.GET_INFO_BY_PHONE, {
+        params: {
+          phoneNumber
+        }
+      })
+      
+      if (!response.success) {
+        throw new Error(response.message || 'Không tìm thấy thông tin người dùng')
+      }
+      
+      return response
+    } catch (error) {
+      console.error('Error getting user info from phone number:', error)
+      return {
+        success: false,
+        message: 'Không thể lấy thông tin người dùng từ số điện thoại',
+        error: error.message
+      }
     }
   }
 }

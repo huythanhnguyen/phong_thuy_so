@@ -15,8 +15,11 @@ import {
   faExclamationCircle, faQuestionCircle, faSun, faCloud, 
   faBalanceScale, faPlusCircle, faMinusCircle, faTrashAlt,
   faIdCard, faCreditCard, faChevronDown, faUserCircle, faPlus,
-    // Icons mới
-    faMobileAlt, faArrowRight, faChevronUp, faMobile, faMoneyBill
+  // Icons mới
+  faMobileAlt, faArrowRight, faChevronUp, faMobile, faMoneyBill, 
+  faUniversity, faExclamationTriangle, faCalendarAlt, faChevronLeft, faChevronRight,
+  // Icons bị thiếu
+  faCompass, faTools, faTags
 } from '@fortawesome/free-solid-svg-icons'
 
 // Add all the necessary icons
@@ -27,8 +30,11 @@ library.add(
   faExclamationCircle, faQuestionCircle, faSun, faCloud, 
   faBalanceScale, faPlusCircle, faMinusCircle, faTrashAlt,
   faIdCard, faCreditCard, faChevronDown, faUserCircle, faPlus,
-    // Icons mới
-    faMobileAlt, faArrowRight, faChevronUp, faMobile, faMoneyBill
+  // Icons mới
+  faMobileAlt, faArrowRight, faChevronUp, faMobile, faMoneyBill,
+  faUniversity, faExclamationTriangle, faCalendarAlt, faChevronLeft, faChevronRight,
+  // Icons bị thiếu
+  faCompass, faTools, faTags
 )
 
 // Import global CSS

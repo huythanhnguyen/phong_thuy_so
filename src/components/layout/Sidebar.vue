@@ -10,6 +10,33 @@
       </button>
     </div>
     
+    <!-- User Profile & Quota Section -->
+    <div class="sidebar-user-section">
+      <div class="user-profile">
+        <div class="user-avatar">
+          <font-awesome-icon icon="user-circle" />
+        </div>
+        <div class="user-info">
+          <div class="user-name">{{ userName }}</div>
+          <div class="user-plan">{{ userPlan }}</div>
+        </div>
+      </div>
+      
+      <div class="quota-container">
+        <div class="quota-info-header">
+          <div class="quota-label">Câu hỏi còn lại:</div>
+          <div class="quota-value" :class="quotaColorClass">
+            <font-awesome-icon icon="question-circle" /> {{ remainingQuestions }}
+          </div>
+        </div>
+        
+        <router-link to="/payment" class="add-quota-button">
+          <font-awesome-icon icon="plus-circle" />
+          Nạp thêm câu hỏi
+        </router-link>
+      </div>
+    </div>
+    
     <div class="sidebar-content">
       <div class="sidebar-tabs">
         <button 
@@ -18,6 +45,14 @@
           @click="setActiveTab('history')"
         >
           Lịch sử
+        </button>
+        
+        <button 
+          class="sidebar-tab-button" 
+          :class="{ active: activeTab === 'payments' }"
+          @click="setActiveTab('payments')"
+        >
+          Thanh toán
         </button>
       </div>
       
@@ -85,15 +120,26 @@
           </template>
         </div>
       </div>
+      
+      <!-- Nội dung tab thanh toán -->
+      <div 
+        class="sidebar-tab-content" 
+        :class="{ active: activeTab === 'payments' }"
+        id="payments-tab"
+      >
+        <payment-history />
+      </div>
     </div>
   </div>
 </template>
 
 <script setup>
 import { ref, computed, onMounted } from 'vue'
+import { useAuthStore } from '@/stores/auth'
 import { useAnalysisStore } from '@/stores/analysis'
 import { useChatStore } from '@/stores/chat'
 import { formatPhoneNumber, formatDate } from '@/utils'
+import PaymentHistory from '@/components/payment/PaymentHistory.vue'
 
 const props = defineProps({
   isActive: {
@@ -104,6 +150,7 @@ const props = defineProps({
 
 const emit = defineEmits(['close'])
 
+const authStore = useAuthStore()
 const analysisStore = useAnalysisStore()
 const chatStore = useChatStore()
 
@@ -117,6 +164,21 @@ const totalPages = ref(1)
 // Computed
 const analysisHistory = computed(() => analysisStore.analysisHistory)
 const canLoadMore = computed(() => currentPage.value < totalPages.value)
+const remainingQuestions = computed(() => chatStore.remainingQuestions)
+
+const userName = computed(() => {
+  return authStore.currentUser?.name || 'Người dùng'
+})
+
+const userPlan = computed(() => {
+  return authStore.currentUser?.subscription?.plan || 'Gói miễn phí'
+})
+
+const quotaColorClass = computed(() => {
+  if (remainingQuestions.value > 10) return 'quota-high'
+  if (remainingQuestions.value >= 5) return 'quota-medium'
+  return 'quota-low'
+})
 
 // Methods
 const setActiveTab = (tab) => {
@@ -205,8 +267,10 @@ const getBalanceText = (balance) => {
 }
 
 // Fetch history on mount
-onMounted(() => {
+onMounted(async () => {
   loadAnalysisHistory()
+  // Make sure we have the latest remaining questions
+  await chatStore.fetchRemainingQuestions()
 })
 </script>
 
@@ -223,6 +287,107 @@ onMounted(() => {
   flex-direction: column;
   z-index: 5;
   transition: transform 0.3s ease;
+}
+
+/* User Profile & Quota Section */
+.sidebar-user-section {
+  padding: 16px;
+  background-color: #f8f8f8;
+  border-bottom: 1px solid var(--border-color, #e0e0e0);
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.user-avatar {
+  width: 40px;
+  height: 40px;
+  font-size: 40px;
+  color: var(--primary-color, #4361ee);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-info {
+  flex: 1;
+}
+
+.user-name {
+  font-weight: 600;
+  color: var(--text-primary, #212529);
+  font-size: 0.95rem;
+}
+
+.user-plan {
+  font-size: 0.8rem;
+  color: var(--text-secondary, #6c757d);
+}
+
+.quota-container {
+  padding: 10px;
+  background-color: white;
+  border: 1px solid var(--border-color, #e0e0e0);
+  border-radius: 8px;
+}
+
+.quota-info-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.quota-label {
+  font-size: 0.85rem;
+  color: var(--text-secondary, #6c757d);
+}
+
+.quota-value {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.quota-high {
+  color: #2e7d32;
+}
+
+.quota-medium {
+  color: #f57f17;
+}
+
+.quota-low {
+  color: #d32f2f;
+}
+
+.add-quota-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: var(--primary-color, #4361ee);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  width: 100%;
+}
+
+.add-quota-button:hover {
+  background-color: var(--primary-dark, #3a56d4);
+  transform: translateY(-2px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 /* On mobile */

@@ -13,6 +13,7 @@ const API_CONFIG = {
   USER: {
     PROFILE: '/users/profile',
     UPDATE_PROFILE: '/users/profile',
+    REMAINING_QUESTIONS: '/payments/user/questions'
   },
   ANALYSIS: {
     ANALYZE: '/analysis/analyze',
@@ -21,6 +22,12 @@ const API_CONFIG = {
     RECENT: '/analysis/recent',
     QUESTION: '/analysis/question',
     DELETE_HISTORY: '/analysis/history'
+  },
+  PAYMENT: {
+    CREATE: '/payments/create',
+    HISTORY: '/payments/payment/history',
+    CALLBACK: '/payments/callback',
+    STATUS: '/payments/status'
   },
   REQUEST_TIMEOUT: 15000,
 }

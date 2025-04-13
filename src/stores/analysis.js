@@ -16,16 +16,36 @@ export const useAnalysisStore = defineStore('analysis', () => {
     
     try {
       const response = await analysisService.analyzePhoneNumber(phoneNumber)
+      console.log('Received response in analyzePhoneNumber store:', response)
       
       if (response.success) {
-        currentAnalysis.value = response.analysis || response.data || response
-        return { success: true, data: currentAnalysis.value }
+        // Lưu kết quả phân tích
+        currentAnalysis.value = response.analysisData || response.data || {}
+        
+        // Xác định nội dung hiển thị
+        let displayContent = 'Đã phân tích số điện thoại.'
+        
+        // Ưu tiên lấy geminiResponse từ phân tích
+        if (response.analysisData && response.analysisData.geminiResponse) {
+          displayContent = response.analysisData.geminiResponse
+        } 
+        // Nếu không có geminiResponse, sử dụng content từ response
+        else if (response.content) {
+          displayContent = response.content
+        }
+        
+        // Xây dựng và trả về kết quả đã định dạng
+        return { 
+          success: true, 
+          content: displayContent,
+          analysisData: currentAnalysis.value
+        }
       } else {
-        error.value = response.message || 'Không thể phân tích số điện thoại'
+        error.value = response.message || response.error || 'Không thể phân tích số điện thoại'
         return { success: false, error: error.value }
       }
     } catch (err) {
-      console.error('Error analyzing phone number:', err)
+      console.error('Error analyzing phone number in store:', err)
       error.value = err.message || 'Đã xảy ra lỗi khi phân tích số điện thoại'
       return { success: false, error: error.value }
     } finally {

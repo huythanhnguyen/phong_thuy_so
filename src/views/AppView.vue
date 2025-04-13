@@ -30,9 +30,10 @@
         <!-- Chat Messages -->
         <div class="chat-messages" ref="messagesRef">
           <ChatMessage 
-            v-for="message in messages" 
+            v-for="(message, index) in messages" 
             :key="message.id" 
             :message="message"
+            :is-last-message="index === messages.length - 1"
             @question-select="handleQuestionSelect"
             @category-select="handleCategorySelect"
           />
@@ -41,11 +42,14 @@
         <!-- Typing Indicator -->
         <TypingIndicator :is-typing="isTyping" />
         
-        <!-- Chat Input -->
-        <ChatInput 
-          :is-disabled="isTyping"
-          @send="handleSendMessage"
-        />
+        <!-- Chat Input Area -->
+        <div class="chat-input-area">
+          <QuestionCounter :remaining-questions="remainingQuestions" />
+          <ChatInput 
+            :is-disabled="isTyping"
+            @send="handleSendMessage"
+          />
+        </div>
       </div>
     </div>
     
@@ -74,6 +78,7 @@ import AppHeader from '@/components/layout/AppHeader.vue'
 import ChatMessage from '@/components/chat/ChatMessage.vue'
 import ChatInput from '@/components/chat/ChatInput.vue'
 import TypingIndicator from '@/components/chat/TypingIndicator.vue'
+import QuestionCounter from '@/components/chat/QuestionCounter.vue'
 import ModalDialog from '@/components/layout/ModalDialog.vue'
 import PasswordChangeForm from '@/components/auth/PasswordChangeForm.vue'
 
@@ -95,6 +100,7 @@ const userName = computed(() => {
 
 const messages = computed(() => chatStore.messages)
 const isTyping = computed(() => chatStore.isTyping)
+const remainingQuestions = computed(() => chatStore.remainingQuestions)
 
 // Methods
 const toggleSidebar = () => {
@@ -141,7 +147,7 @@ onMounted(() => {
   }
   
   // Initialize chat
-  chatStore.initChat()
+  chatStore.clearChat()
   
   // Scroll to bottom on initial load
   scrollToBottom()
@@ -173,6 +179,14 @@ onMounted(() => {
   overflow: hidden;
   position: relative;
   height: 100%;
+}
+
+.chat-input-area {
+  display: flex;
+  align-items: center;
+  padding: 10px 16px;
+  background-color: white;
+  border-top: 1px solid var(--border-color, #e1e4e8);
 }
 
 .welcome-banner {
@@ -234,6 +248,10 @@ onMounted(() => {
   
   .user-welcome p {
     font-size: 0.95rem;
+  }
+  
+  .chat-input-area {
+    padding: 8px 12px;
   }
 }
 </style>

@@ -28,6 +28,12 @@
     
     <!-- Header bên phải -->
     <div class="header-right">
+      <!-- Hiển thị số câu hỏi còn lại -->
+      <div class="remaining-questions-display" :title="`Bạn còn ${remainingQuestions} câu hỏi`">
+        <font-awesome-icon icon="question-circle" />
+        <span class="question-count" :class="questionCountClass">{{ remainingQuestions }}</span>
+      </div>
+      
       <button class="clear-button-mobile" title="Xóa cuộc trò chuyện" @click="confirmClearChat">
         <font-awesome-icon icon="trash-alt" />
       </button>
@@ -42,11 +48,26 @@
             <p><strong>Tên:</strong> <span>{{ user?.name || 'Người dùng' }}</span></p>
             <p><strong>Email:</strong> <span>{{ user?.email || '' }}</span></p>
             <p><strong>Ngày tạo:</strong> <span>{{ formatCreatedDate }}</span></p>
+            
+            <!-- Hiển thị thông tin quota -->
+            <div class="quota-info">
+              <div class="quota-label">Câu hỏi còn lại:</div>
+              <div class="quota-value" :class="questionCountClass">
+                <font-awesome-icon icon="question-circle" />
+                {{ remainingQuestions }}
+              </div>
+            </div>
           </div>
+          
           <div class="account-actions">
+            <router-link to="/payment" class="dropdown-btn payment-btn">
+              <font-awesome-icon icon="plus-circle" /> Nạp thêm câu hỏi
+            </router-link>
+            
             <button class="dropdown-btn" @click="showPasswordModal">
               <font-awesome-icon icon="key" /> Đổi Mật Khẩu
             </button>
+            
             <button class="dropdown-btn danger" @click="confirmLogout">
               <font-awesome-icon icon="sign-out-alt" /> Đăng Xuất
             </button>
@@ -72,6 +93,14 @@ const router = useRouter()
 const user = computed(() => authStore.currentUser)
 const formatCreatedDate = computed(() => {
   return user.value?.createdAt ? formatDate(user.value.createdAt) : ''
+})
+
+// Remaining questions
+const remainingQuestions = computed(() => chatStore.remainingQuestions)
+const questionCountClass = computed(() => {
+  if (remainingQuestions.value > 10) return 'count-high'
+  if (remainingQuestions.value >= 5) return 'count-medium'
+  return 'count-low'
 })
 
 // Dropdown states
@@ -105,8 +134,8 @@ const confirmClearChat = () => {
 const confirmLogout = () => {
   if (confirm('Bạn có chắc muốn đăng xuất?')) {
     authStore.logout()
-   // Sau khi logout, điều hướng về trang chủ
-   router.push({ name: 'home' })
+    // Sau khi logout, điều hướng về trang chủ
+    router.push({ name: 'home' })
   }
 }
 
@@ -133,8 +162,10 @@ const handleClickOutside = (event) => {
   }
 }
 
-onMounted(() => {
+onMounted(async () => {
   document.addEventListener('click', handleClickOutside)
+  // Make sure we have the latest remaining questions
+  await chatStore.fetchRemainingQuestions()
 })
 
 onUnmounted(() => {
@@ -160,6 +191,34 @@ onUnmounted(() => {
   gap: 12px;
 }
 
+/* Remaining Questions Display */
+.remaining-questions-display {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 6px 10px;
+  border-radius: 16px;
+  font-size: 0.9rem;
+  cursor: help;
+}
+
+.question-count {
+  font-weight: 600;
+}
+
+.count-high {
+  color: #c8f7c5;
+}
+
+.count-medium {
+  color: #ffecb5;
+}
+
+.count-low {
+  color: #ffcdd2;
+}
+
 /* Toggle Sidebar Button (mobile) */
 .toggle-sidebar-btn {
   background: rgba(255, 255, 255, 0.2);
@@ -177,6 +236,42 @@ onUnmounted(() => {
 
 .toggle-sidebar-btn:hover {
   background: rgba(255, 255, 255, 0.3);
+}
+
+/* Quota info in dropdown */
+.quota-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--border-color, #e0e0e0);
+}
+
+.quota-label {
+  font-size: 0.9rem;
+  color: var(--text-secondary, #6c757d);
+}
+
+.quota-value {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+/* Payment button */
+.payment-btn {
+  background-color: var(--primary-light, #e7ecfd);
+  color: var(--primary-color, #4361ee);
+  border-color: var(--primary-color, #4361ee);
+  font-weight: 600;
+}
+
+.payment-btn:hover {
+  background-color: var(--primary-color, #4361ee);
+  color: white;
 }
 
 /* Service Selector Dropdown */

@@ -4,6 +4,7 @@ import LoginView from '../views/LoginView.vue'
 import AppView from '../views/AppView.vue'
 import OurService from '../views/OurService.vue'
 import Pricing from '../views/Pricing.vue'
+import PaymentView from '../views/PaymentView.vue'
 import TC from '../views/TC.vue'
 
 // Thêm import cho các trang con
@@ -72,6 +73,12 @@ const router = createRouter({
       path: '/tc',
       name: 'tc',
       component: TC
+    },
+    {
+      path: '/payment',
+      name: 'payment',
+      component: PaymentView,
+      meta: { requiresAuth: true }
     }
   ]
 })

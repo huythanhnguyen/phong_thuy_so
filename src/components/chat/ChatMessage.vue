@@ -1,62 +1,78 @@
 <template>
-  <div class="message" :class="messageClass" :id="message.id">
-    <!-- Nội dung tin nhắn -->
-    <div class="message-content" v-html="formattedContent"></div>
-    
-    <!-- Phần phân tích (nếu có) -->
-    <div v-if="hasAnalysisData" class="analysis-container">
-      <analysis-result :data="message.analysisData" />
-    </div>
-    
-    <!-- Phần gợi ý câu hỏi (nếu là tin nhắn bot có phân tích) -->
-    <div v-if="isBot && hasAnalysisData" class="suggestion-section">
-      <div class="suggestion-text">
-        <p>Bạn có thể hỏi thêm về:</p>
-      </div>
-      <div class="question-examples">
-        <button 
-          v-for="(question, index) in questionExamples" 
-          :key="index" 
-          class="example-question-btn"
-          @click="onQuestionSelect(question)"
-        >
-          {{ question }}
-        </button>
+  <div>
+    <!-- Thêm QuotaAlert nếu là tin nhắn cuối cùng từ bot và hết câu hỏi -->
+    <quota-alert v-if="isBot && isLastMessage && showQuotaAlert" 
+                @close="handleCloseAlert" 
+                :show="showQuotaAlert" />
+                
+    <div class="message" :class="messageClass" :id="message.id">
+      <!-- Nội dung tin nhắn -->
+      <div class="message-content" v-html="formattedContent"></div>
+      
+      <!-- Phần phân tích (nếu có) -->
+      <div v-if="hasAnalysisData" class="analysis-container">
+        <analysis-result :data="message.analysisData" />
       </div>
       
-      <!-- Suggestion chips -->
-      <div class="suggestion-chips">
-        <button 
-          v-for="(category, index) in categories" 
-          :key="index"
-          class="category-btn" 
-          :data-category="category.value"
-          @click="onCategorySelect(category)"
-        >
-          <font-awesome-icon :icon="category.icon" /> {{ category.label }}
-        </button>
+      <!-- Phần gợi ý câu hỏi (nếu là tin nhắn bot có phân tích) -->
+      <div v-if="isBot && hasAnalysisData" class="suggestion-section">
+        <div class="suggestion-text">
+          <p>Bạn có thể hỏi thêm về:</p>
+        </div>
+        <div class="question-examples">
+          <button 
+            v-for="(question, index) in questionExamples" 
+            :key="index" 
+            class="example-question-btn"
+            @click="onQuestionSelect(question)"
+          >
+            {{ question }}
+          </button>
+        </div>
+        
+        <!-- Suggestion chips -->
+        <div class="suggestion-chips">
+          <button 
+            v-for="(category, index) in categories" 
+            :key="index"
+            class="category-btn" 
+            :data-category="category.value"
+            @click="onCategorySelect(category)"
+          >
+            <font-awesome-icon :icon="category.icon" /> {{ category.label }}
+          </button>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { computed, inject } from 'vue'
 import { formatBotMessage } from '@/utils'
 import AnalysisResult from '@/components/analysis/AnalysisResult.vue'
+import QuotaAlert from '@/components/payment/QuotaAlert.vue'
+import { useChatStore } from '@/stores/chat'
 
 const props = defineProps({
   message: {
     type: Object,
     required: true
+  },
+  isLastMessage: {
+    type: Boolean,
+    default: false
   }
 })
 
 const emit = defineEmits(['question-select', 'category-select'])
+const chatStore = useChatStore()
 
 // Computed
 const isBot = computed(() => props.message.role === 'assistant')
 const isUser = computed(() => props.message.role === 'user')
+const showQuotaAlert = computed(() => chatStore.showQuotaAlert && props.isLastMessage)
+
 const messageClass = computed(() => {
   return {
     'bot-message': isBot.value,
@@ -131,6 +147,12 @@ const onCategorySelect = (category) => {
   }
   
   emit('category-select', question)
+}
+
+const handleCloseAlert = () => {
+  chatStore.setShowQuotaAlert(false)
+  // Lưu thời điểm đóng thông báo để không hiển thị lại trong 7 ngày
+  localStorage.setItem('quota_alert_shown_time', new Date().getTime().toString())
 }
 </script>
 
