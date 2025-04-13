@@ -32,73 +32,56 @@
       </div>
     </section>
 
-    <!-- Lý Do Tin Vào Bát Cục Linh Số Section - MỚI -->
-   <!-- Section Tại Sao Bát Cục Linh Số Phù Hợp Với Mọi Người -->
-<section class="py-16 bg-gradient-to-r from-blue-50 to-indigo-50">
+    <section class="py-12 bg-gradient-to-r from-blue-50 to-indigo-50">
   <div class="container mx-auto px-4">
-    <h2 class="text-3xl font-bold text-center mb-8">Tại Sao Bát Cục Linh Số Phù Hợp Với Mọi Người</h2>
-    <p class="text-center text-lg text-gray-700 mb-12 max-w-3xl mx-auto">
-      Trong thời đại số, vạn vật quanh ta đều gắn liền với những con số có ảnh hưởng sâu sắc đến cuộc sống
+    <h2 class="text-3xl font-bold text-center mb-6">Bát Cực Linh Số là gì?</h2>
+    <p class="text-center text-lg text-gray-700 mb-8 max-w-3xl mx-auto">
+      Trong thời đại số, con số ảnh hưởng sâu sắc đến cuộc sống hàng ngày
     </p>
     
-    <div class="grid md:grid-cols-2 gap-10">
-      <div class="bg-white rounded-lg shadow-lg p-8">
-        <h3 class="text-xl font-bold mb-4 text-primary">Cuộc Sống Hiện Đại Không Thể Tách Rời Con Số</h3>
-        <p class="text-gray-700 mb-4">
-          Vạn vật đều là số, trong mọi mặt của cuộc sống: Ngày tháng, tuổi tác, số tầng lầu, số nhà, tuyến xe buýt, biển số xe, số điện thoại, số thẻ ngân hàng, giá cả hàng hóa, chuyến bay... tất cả đều vây quanh chúng ta hàng ngày.
+    <div class="grid md:grid-cols-2 gap-8">
+      <div class="bg-white rounded-lg shadow-lg p-6">
+        <h3 class="text-xl font-bold mb-3 text-primary">Con Số Trong Cuộc Sống</h3>
+        <p class="text-gray-700 mb-3">
+          Số và người hấp dẫn nhau. Người có từ trường nào sẽ hấp dẫn dãy số tương ứng và ngược lại.
         </p>
-        <p class="text-gray-700 mb-4">
-          Đặc biệt là điện thoại, công cụ thiết yếu mà hiện nay ai cũng cần sử dụng, tập trung lượng lớn thông tin. Tài khoản ngân hàng, mã số sản phẩm, mã số khách hàng - đều là những dãy số không thể thiếu trong đời sống hiện đại.
-        </p>
-        <div class="bg-blue-50 p-4 rounded-lg">
+        <div class="bg-blue-50 p-3 rounded-lg">
           <p class="italic text-gray-600">
-            "Năng Lượng Số Học là một môn học bắt buộc trong xã hội hiện nay. Bộ tư liệu này đem thầm áo Dịch Kinh chuyển thành Dịch Học Số đơn giản, thông qua Số giải thích năng lượng từ trường trong cuộc sống nhân sinh."
+            "Năng Lượng Số Học là môn học giải thích năng lượng từ trường trong cuộc sống nhân sinh."
           </p>
         </div>
       </div>
       
-      <div class="bg-white rounded-lg shadow-lg p-8">
-        <h3 class="text-xl font-bold mb-4 text-primary">Minh Chứng Từ Thực Tế Cuộc Sống</h3>
-        <ul class="space-y-4">
+      <div class="bg-white rounded-lg shadow-lg p-6">
+        <h3 class="text-xl font-bold mb-3 text-primary">Minh Chứng Thực Tế</h3>
+        <ul class="space-y-3">
           <li class="flex items-start">
-            <div class="flex-shrink-0 h-6 w-6 rounded-full bg-green-100 flex items-center justify-center mt-1">
+            <div class="flex-shrink-0 h-5 w-5 rounded-full bg-green-100 flex items-center justify-center mt-1">
               <font-awesome-icon icon="check" class="text-green-600 text-xs" />
             </div>
-            <div class="ml-3">
+            <div class="ml-2">
               <p class="text-gray-700">
-                <span class="font-semibold">Thành công tài chính:</span> Nhiều người bình thường nhờ sử dụng dãy số vượng Tài, vượng Quan đã trở thành người giàu có. Khi phù hào trở nên giàu có thì Số tiếp tục ví họ mà thu nạp tài vật bất phương.
+                <span class="font-semibold">Thành công tài chính:</span> Nhiều người thành công nhờ dãy số vượng Tài, vượng Quan.
               </p>
             </div>
           </li>
           <li class="flex items-start">
-            <div class="flex-shrink-0 h-6 w-6 rounded-full bg-green-100 flex items-center justify-center mt-1">
+            <div class="flex-shrink-0 h-5 w-5 rounded-full bg-green-100 flex items-center justify-center mt-1">
               <font-awesome-icon icon="check" class="text-green-600 text-xs" />
             </div>
-            <div class="ml-3">
+            <div class="ml-2">
               <p class="text-gray-700">
-                <span class="font-semibold">Cải thiện quan hệ cá nhân:</span> Một người đàn ông nhiều nữ nhân vây quanh vì dùng dãy số thúc đào hoa, lợi hôn nhân, nhờ đó rất nhanh tìm được ý trung nhân và có hôn nhân hạnh phúc.
+                <span class="font-semibold">Cải thiện quan hệ:</span> Dãy số thúc đào hoa, lợi hôn nhân giúp tìm được hạnh phúc.
               </p>
             </div>
           </li>
           <li class="flex items-start">
-            <div class="flex-shrink-0 h-6 w-6 rounded-full bg-green-100 flex items-center justify-center mt-1">
+            <div class="flex-shrink-0 h-5 w-5 rounded-full bg-green-100 flex items-center justify-center mt-1">
               <font-awesome-icon icon="check" class="text-green-600 text-xs" />
             </div>
-            <div class="ml-3">
+            <div class="ml-2">
               <p class="text-gray-700">
-                <span class="font-semibold">Vượt qua khó khăn:</span> Nhiều người đang ở tình cảnh khó khăn, bắt đầu dùng dãy số cát tường, không lâu sau thoát khỏi tình trạng quẫn bách, mọi thứ đều tiến vào hoàn cảnh tốt, đạt được tình hình lý tưởng.
-              </p>
-            </div>
-          </li>
-          <li class="flex items-start">
-            <div class="flex-shrink-0 h-6 w-6 rounded-full bg-green-100 flex items-center justify-center mt-1">
-              <font-awesome-icon icon="check" class="text-green-600 text-xs" />
-            </div>
-            <div class="ml-3">
-              <p class="text-gray-700">
-                <span class="font-semibold">Tránh tai ương:</span> 
-                Số điện thoại và biển số xe bạn là những con số quan trọng vì bạn sử dụng nó hàng ngày. 
-                Bát Cực Linh Số giúp bạn hiểu được nó và tránh được những ảnh hưởng xấu.
+                <span class="font-semibold">Tránh tai ương:</span> Hiểu ý nghĩa số điện thoại, biển số xe để tránh ảnh hưởng xấu.
               </p>
             </div>
           </li>
@@ -106,25 +89,6 @@
       </div>
     </div>
     
-    <div class="mt-12 bg-white rounded-lg shadow-lg p-8 max-w-3xl mx-auto">
-      <h3 class="text-xl font-bold mb-4 text-center text-primary">Cùng Tương Hỗ Với Sức Mạnh Của Con Số</h3>
-      <p class="text-gray-700 mb-4">
-        Số và người hấp dẫn nhau,Người có đang từ trường gì thì sẽ hấp dẫn dãy Số đó.
-         Mà Số có dòng từ trường gì lại dễ dàng hấp dẫn hạng người đó nên hãy thử dùng công cụ này và chiêm nghiệm.
-         Bạn sẽ rất ngạc nhiên vì nó ứng thế nào.
-      </p>
-      <div class="bg-yellow-50 p-5 rounded-lg">
-        <p class="font-semibold text-center text-gray-800 mb-2">Sự thật quan trọng</p>
-        <p class="text-gray-700">
-          "Có được một dãy số vượng Tài hút Tài lại có thể thủ Tài thì bạn sẽ thu được Tài Phú lớn, thành công, được quý nhân giúp đỡ. 
-          Thông qua tổ hợp và sắp xếp Số để đạt được hiệu quả cải thiện tài vận, hôn nhân, sự nghiệp, khỏe mạnh cũng như quan vận, quý nhân vận."
-        </p>
-      </div>
-      <p class="text-gray-700 mt-4">
-        Hiểu được chân lý chính là nắm giữ vận mệnh, thành công. 
-        Ngược lại muốn làm đại sự lại không có quý nhân nâng đỡ mà buồn khổ, phiền não, cảm thấy mình không gặp thời, mệnh vận trêu người.
-      </p>
-    </div>
   </div>
 </section>
 
