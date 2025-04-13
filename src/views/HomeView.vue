@@ -368,12 +368,18 @@
               <h3 class="text-lg font-semibold">Làm thế nào để chọn số điện thoại hợp phong thủy?</h3>
               <font-awesome-icon icon="chevron-down" class="text-gray-500" />
             </div>
+            <div class="mt-4 text-gray-600">
+              Để chọn số điện thoại hợp phong thủy, cần phân tích dãy số thành các cặp số liền kề và đánh giá theo nguyên lý Tứ Cát Tứ Hung. Một số điện thoại tốt nên có tỷ lệ cân bằng giữa cát hung (50/50) hoặc thiên về cát. Đặc biệt chú ý đến 3 số cuối cùng, vì chúng ảnh hưởng trực tiếp đến hiện tại. Nên có các cặp số thuộc sao Thiên Y, Sinh Khí và tránh các cặp thuộc Tuyệt Mệnh, Ngũ Quỷ.
+            </div>
           </div>
           
           <div class="bg-white rounded-lg shadow-sm p-4">
             <div class="flex justify-between items-center cursor-pointer">
               <h3 class="text-lg font-semibold">Tại sao biển số xe lại quan trọng trong Bát Cục Linh Số?</h3>
               <font-awesome-icon icon="chevron-down" class="text-gray-500" />
+            </div>
+            <div class="mt-4 text-gray-600">
+              Biển số xe đặc biệt quan trọng vì nó là con số bạn tiếp xúc hàng ngày trong suốt thời gian sở hữu xe. Theo Bát Cục Linh Số, biển số xe phù hợp có thể giúp tránh tai nạn, sự cố và mang lại may mắn trong di chuyển. Đặc biệt đối với người thường xuyên lái xe, biển số có thể tạo lá chắn bảo vệ hoặc ngược lại, làm tăng nguy cơ rủi ro. Một biển số tốt cũng có thể hỗ trợ sự nghiệp và tài lộc cho chủ xe.
             </div>
           </div>
           
@@ -382,12 +388,18 @@
               <h3 class="text-lg font-semibold">Số CCCD có thực sự ảnh hưởng đến vận mệnh không?</h3>
               <font-awesome-icon icon="chevron-down" class="text-gray-500" />
             </div>
+            <div class="mt-4 text-gray-600">
+              Số CCCD ảnh hưởng đến vận mệnh vì đây là dãy số định danh gắn liền với bạn trong suốt cuộc đời. Trong Bát Cục Linh Số, mỗi dãy số đều mang năng lượng riêng và tương tác với từ trường của chủ nhân. Số CCCD tạo một "dấu ấn số học" đặc trưng, có thể hỗ trợ hoặc cản trở trong các khía cạnh cuộc sống như sự nghiệp, tài chính, các mối quan hệ. Dù không thể thay đổi số CCCD, nhưng hiểu được ý nghĩa của nó giúp bạn điều chỉnh các yếu tố khác để cân bằng.
+            </div>
           </div>
           
           <div class="bg-white rounded-lg shadow-sm p-4">
             <div class="flex justify-between items-center cursor-pointer">
               <h3 class="text-lg font-semibold">Tôi có thể thay đổi số nào để cải thiện vận mệnh?</h3>
               <font-awesome-icon icon="chevron-down" class="text-gray-500" />
+            </div>
+            <div class="mt-4 text-gray-600">
+              Bạn có thể thay đổi số điện thoại, số tài khoản ngân hàng và biển số xe (trong khả năng cho phép) để cải thiện vận mệnh. Đây là những dãy số bạn có quyền lựa chọn và thường xuyên sử dụng. Số điện thoại đặc biệt quan trọng vì bạn tiếp xúc với nó hàng ngày, ảnh hưởng trực tiếp đến công việc, mối quan hệ. Số tài khoản ngân hàng có thể tác động đến tài lộc, còn biển số xe ảnh hưởng đến sự an toàn và vận may trong di chuyển. Ngoài ra, bạn cũng nên chú ý đến số nhà, căn hộ khi có điều kiện chọn lựa.
             </div>
           </div>
         </div>
