@@ -97,35 +97,35 @@
       <div class="container mx-auto px-4">
         <h2 class="text-3xl font-bold text-center mb-12">Ứng Dụng Trong Cuộc Sống</h2>
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div class="feature-card">
+          <router-link to="/guides/chon-so-dien-thoai" class="feature-card cursor-pointer">
             <div class="feature-icon">
               <font-awesome-icon icon="mobile-alt" />
             </div>
             <h3 class="feature-title">Số Điện Thoại</h3>
             <p class="feature-description">Phân tích từng cặp số để tìm ra sự cân bằng giữa các sao tốt xấu, giúp thu hút tài lộc, quý nhân và cơ hội nghề nghiệp.</p>
-          </div>
-          <div class="feature-card">
+          </router-link>
+          <router-link to="/guides/can-cuoc-cong-dan" class="feature-card cursor-pointer">
             <div class="feature-icon">
               <font-awesome-icon icon="id-card" />
             </div>
             <h3 class="feature-title">Căn Cước Công Dân</h3>
             <p class="feature-description">Khám phá mã số định danh của bạn có ảnh hưởng gì đến vận mệnh, sự nghiệp và đường đời từ góc nhìn số học.</p>
-          </div>
-          <div class="feature-card">
+          </router-link>
+          <router-link to="/guides/mat-khau" class="feature-card cursor-pointer">
             <div class="feature-icon">
-              <font-awesome-icon icon="car" />
+              <font-awesome-icon icon="key" />
             </div>
-            <h3 class="feature-title">Biển Số Xe</h3>
-            <p class="feature-description">Phân tích biển số xe để tránh tai nạn, sự cố và mang lại may mắn trong di chuyển. 
-              Đặc biệt quan trọng với người thường xuyên lái xe.</p>
-          </div>
-          <div class="feature-card">
+            <h3 class="feature-title">Mật Khẩu</h3>
+            <p class="feature-description">Tạo mật khẩu vừa bảo mật vừa mang lại may mắn theo nguyên lý phong thủy số học. 
+              Áp dụng cho tài khoản ngân hàng, email, mạng xã hội.</p>
+          </router-link>
+          <router-link to="/guides/chon-so-ngan-hang" class="feature-card cursor-pointer">
             <div class="feature-icon">
               <font-awesome-icon icon="credit-card" />
             </div>
             <h3 class="feature-title">Số Tài Khoản</h3>
             <p class="feature-description">Lựa chọn số tài khoản ngân hàng phù hợp để thu hút tài lộc, thịnh vượng và thuận lợi trong giao dịch tài chính.</p>
-          </div>
+          </router-link>
         </div>
       </div>
     </section>

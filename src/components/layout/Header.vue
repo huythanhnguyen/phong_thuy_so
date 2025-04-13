@@ -14,10 +14,10 @@
 
       <!-- Menu desktop -->
       <nav class="hidden md:flex space-x-6">
-        <router-link to="/" class="text-gray-700 hover:text-primary transition duration-300">Trang chủ</router-link>
-        <a href="#" class="text-gray-700 hover:text-primary transition duration-300">Dịch vụ</a>
-        <a href="#" class="text-gray-700 hover:text-primary transition duration-300">Về chúng tôi</a>
-        <a href="#" class="text-gray-700 hover:text-primary transition duration-300">Liên hệ</a>
+        <router-link to="/" class="text-gray-700 hover:text-primary transition duration-300">Giới thiệu</router-link>
+        <router-link to="/guides/bat-cuc-linh-so" class="text-gray-700 hover:text-primary transition duration-300">Bát cực linh số</router-link>
+        <router-link to="/our-service" class="text-gray-700 hover:text-primary transition duration-300">Dịch vụ</router-link>
+        <router-link to="/pricing" class="text-gray-700 hover:text-primary transition duration-300">Giá cả</router-link>
       </nav>
 
       <!-- Nút đăng nhập/đăng ký trên desktop -->
@@ -59,18 +59,18 @@
               <font-awesome-icon icon="home" class="text-primary" />
               <span>Trang chủ</span>
             </router-link>
-            <a href="#" class="flex items-center space-x-3 py-2 px-4 text-gray-700 hover:text-primary hover:bg-gray-100 transition duration-300 text-xl shadow-sm">
+            <router-link to="/guides/bat-cuc-linh-so" @click="toggleMobileMenu" class="flex items-center space-x-3 py-2 px-4 text-gray-700 hover:text-primary hover:bg-gray-100 transition duration-300 text-xl shadow-sm">
+              <font-awesome-icon icon="compass" class="text-primary" />
+              <span>Bát cực linh số</span>
+            </router-link>
+            <router-link to="/our-service" @click="toggleMobileMenu" class="flex items-center space-x-3 py-2 px-4 text-gray-700 hover:text-primary hover:bg-gray-100 transition duration-300 text-xl shadow-sm">
               <font-awesome-icon icon="tools" class="text-primary" />
               <span>Dịch vụ</span>
-            </a>
-            <a href="#" class="flex items-center space-x-3 py-2 px-4 text-gray-700 hover:text-primary hover:bg-gray-100 transition duration-300 text-xl shadow-sm">
-              <font-awesome-icon icon="users" class="text-primary" />
-              <span>Về chúng tôi</span>
-            </a>
-            <a href="#" class="flex items-center space-x-3 py-2 px-4 text-gray-700 hover:text-primary hover:bg-gray-100 transition duration-300 text-xl shadow-sm">
-              <font-awesome-icon icon="envelope" class="text-primary" />
-              <span>Liên hệ</span>
-            </a>
+            </router-link>
+            <router-link to="/pricing" @click="toggleMobileMenu" class="flex items-center space-x-3 py-2 px-4 text-gray-700 hover:text-primary hover:bg-gray-100 transition duration-300 text-xl shadow-sm">
+              <font-awesome-icon icon="tags" class="text-primary" />
+              <span>Giá cả</span>
+            </router-link>
 
             <!-- Nút đăng nhập/đăng ký trên mobile -->
             <div class="mt-8 space-y-4">
