@@ -32,6 +32,10 @@ Tài liệu này chứa danh sách các nhiệm vụ cần thực hiện để p
 - [x] Chat với AI
 - [x] Quản lý số câu hỏi còn lại
 - [x] Giả lập thanh toán
+- [x] Hiển thị lịch sử thanh toán
+- [x] Hiển thị bảng giá các gói dịch vụ
+- [x] Xác nhận thanh toán (Modal)
+- [x] Thông báo thanh toán thành công
 
 ## Giai đoạn 1: Tích hợp thanh toán và nâng cấp công cụ chọn số điện thoại
 
@@ -62,7 +66,7 @@ Tài liệu này chứa danh sách các nhiệm vụ cần thực hiện để p
 - Công việc chi tiết:
   - [ ] Nâng cấp database schema để lưu thông tin giao dịch đầy đủ
   - [ ] Xây dựng API quản lý giao dịch
-  - [ ] Cải tiến UI lịch sử thanh toán
+  - [x] Cải tiến UI lịch sử thanh toán
   - [ ] Tạo tính năng xuất hóa đơn điện tử
   - [ ] Thêm chức năng thông báo email/SMS sau giao dịch
 
@@ -70,12 +74,12 @@ Tài liệu này chứa danh sách các nhiệm vụ cần thực hiện để p
 - ID: `PAY-003`
 - Mô tả: Nâng cấp hệ thống gói thanh toán, cho phép tùy chỉnh
 - Độ ưu tiên: P2
-- Trạng thái: `TODO`
-- Người được giao: TBD
+- Trạng thái: `IN_PROGRESS`
+- Người được giao: Dev Team
 - Deadline: DD/MM/YYYY
 - Công việc chi tiết:
   - [ ] Tạo trang quản lý gói thanh toán cho admin
-  - [ ] Cập nhật UI hiển thị các gói thanh toán
+  - [x] Cập nhật UI hiển thị các gói thanh toán
   - [ ] Thêm tính năng gói thanh toán theo subscription
   - [ ] Thêm hệ thống khuyến mãi và mã giảm giá
 
@@ -128,14 +132,14 @@ Tài liệu này chứa danh sách các nhiệm vụ cần thực hiện để p
 - ID: `PWD-001`
 - Mô tả: Xây dựng công cụ tạo mật khẩu theo phong thủy cá nhân
 - Độ ưu tiên: P1
-- Trạng thái: `TODO`
-- Người được giao: TBD
-- Deadline: DD/MM/YYYY
+- Trạng thái: `DONE`
+- Người được giao: Dev Team
+- Ngày hoàn thành: 05/06/2024
 - Công việc chi tiết:
-  - [ ] Phát triển thuật toán tạo mật khẩu theo phong thủy
-  - [ ] Tạo giao diện người dùng cho công cụ
-  - [ ] Đảm bảo mật khẩu đáp ứng các tiêu chuẩn bảo mật hiện đại
-  - [ ] Thêm tùy chọn cấu hình mật khẩu (độ dài, ký tự đặc biệt)
+  - [x] Phát triển thuật toán tạo mật khẩu theo phong thủy
+  - [x] Tạo giao diện người dùng cho công cụ
+  - [x] Đảm bảo mật khẩu phù hợp theo nguyên tắc phong thủy
+  - [x] Thêm tùy chọn cấu hình mật khẩu (độ dài, mục đích sử dụng)
 
 #### 3.2. Kiểm tra mật khẩu hiện tại
 - ID: `PWD-002`
@@ -161,9 +165,14 @@ Tài liệu này chứa danh sách các nhiệm vụ cần thực hiện để p
 - ID: `BANK-002`
 - Mô tả: Công cụ gợi ý số tài khoản phù hợp với phong thủy cá nhân
 - Độ ưu tiên: P2
-- Trạng thái: `TODO`
-- Người được giao: TBD
-- Deadline: DD/MM/YYYY
+- Trạng thái: `DONE`
+- Người được giao: Dev Team
+- Ngày hoàn thành: 05/06/2024
+- Công việc chi tiết: 
+  - [x] Phát triển thuật toán gợi ý dựa trên phong thủy
+  - [x] Thiết kế giao diện chọn mục đích sử dụng tài khoản
+  - [x] Tính năng phân tích số tài khoản theo cặp số cuối
+  - [x] Thực hiện tính năng tạo số tài khoản phù hợp với tiêu chí
 
 ## Trang/tính năng cần xây dựng mới
 
@@ -194,9 +203,14 @@ Tài liệu này chứa danh sách các nhiệm vụ cần thực hiện để p
 - ID: `PAGE-003`
 - Mô tả: Hoàn thiện trang bảng giá (Pricing.vue) 
 - Độ ưu tiên: P2
-- Trạng thái: `TODO`
-- Người được giao: TBD
-- Deadline: DD/MM/YYYY
+- Trạng thái: `DONE`
+- Người được giao: Dev Team
+- Ngày hoàn thành: 15/06/2024
+- Công việc chi tiết:
+  - [x] Thiết kế giao diện hiển thị các gói thanh toán
+  - [x] Tạo hệ thống tab chuyển đổi giữa phần gói dịch vụ và lịch sử thanh toán
+  - [x] Hiển thị thông tin chi tiết của từng gói thanh toán
+  - [x] Thêm phần FAQ về dịch vụ
 
 #### 5.4. Trang chính sách bảo mật
 - ID: `PAGE-004`
@@ -238,9 +252,14 @@ Tài liệu này chứa danh sách các nhiệm vụ cần thực hiện để p
 - ID: `UX-001`
 - Mô tả: Cải thiện trải nghiệm người dùng và giao diện
 - Độ ưu tiên: P2
-- Trạng thái: `TODO`
-- Người được giao: TBD
+- Trạng thái: `IN_PROGRESS`
+- Người được giao: Dev Team
 - Deadline: DD/MM/YYYY
+- Công việc chi tiết:
+  - [x] Đồng bộ hóa Header và Footer trong toàn bộ ứng dụng
+  - [x] Thiết kế giao diện thanh toán và bảng giá thân thiện người dùng
+  - [ ] Cải thiện hiệu ứng chuyển trang và animation
+  - [ ] Tối ưu hóa tốc độ tải trang
 
 #### 7.2. Tích hợp với backend mới
 - ID: `TECH-004`
@@ -259,6 +278,11 @@ Tài liệu này chứa danh sách các nhiệm vụ cần thực hiện để p
 - ID: `UX-002`
 - Mô tả: Đảm bảo trang web hoạt động tốt trên các thiết bị di động
 - Độ ưu tiên: P1
-- Trạng thái: `TODO`
-- Người được giao: TBD
+- Trạng thái: `IN_PROGRESS`
+- Người được giao: Dev Team
 - Deadline: DD/MM/YYYY 
+- Công việc chi tiết:
+  - [x] Tối ưu hóa giao diện thanh toán cho thiết bị di động
+  - [ ] Cải thiện trải nghiệm người dùng trên màn hình nhỏ
+  - [ ] Kiểm thử trên nhiều loại thiết bị khác nhau
+  - [ ] Đảm bảo tính năng chính hoạt động đầy đủ trên di động 

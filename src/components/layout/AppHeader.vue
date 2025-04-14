@@ -134,8 +134,8 @@ const confirmClearChat = () => {
 const confirmLogout = () => {
   if (confirm('Bạn có chắc muốn đăng xuất?')) {
     authStore.logout()
-    // Sau khi logout, điều hướng về trang chủ
-    router.push({ name: 'home' })
+   // Sau khi logout, điều hướng về trang chủ
+   router.push({ name: 'home' })
   }
 }
 

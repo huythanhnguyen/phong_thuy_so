@@ -133,3 +133,71 @@ Tháng 10: [======= UX-001 =======][======= MOBILE-001 =======]
 ### Milestone 2: Ra mắt hệ thống thanh toán
 - Trạng thái: Chưa bắt đầu
 - Dự kiến: MM/YYYY 
+
+## 15/06/2024
+### Hoàn thành:
+- Cập nhật trang PaymentView.vue để sử dụng Header và Footer giống các trang khác
+- Chuẩn hóa 3 gói thanh toán với các mức giá 49.000, 99.000 và 199.000 VND
+- Thêm danh sách tính năng chi tiết cho từng gói thanh toán
+- Đồng bộ giao diện giữa trang PaymentView.vue và Pricing.vue
+- Cải thiện responsive design cho trang thanh toán
+
+### Đang thực hiện:
+- Xây dựng tính năng cá nhân hóa cho trang tư vấn
+- Nâng cấp hệ thống gói thanh toán với tính năng khuyến mãi
+
+## 14/06/2024
+### Hoàn thành:
+- Tối ưu hóa trang Pricing.vue với giao diện mới
+- Thêm hệ thống tab cho trang Pricing để hiển thị gói dịch vụ và lịch sử thanh toán
+- Thêm phần FAQ cho trang Pricing
+- Thêm chỉ báo số câu hỏi còn lại
+- Cập nhật Tasklog và Task Master
+
+### Đang thực hiện:
+- Tích hợp cổng thanh toán thực tế
+- Thêm tính năng xuất hóa đơn
+
+## 10/06/2024
+### Hoàn thành:
+- Cải thiện thuật toán gợi ý số điện thoại
+- Thêm tính năng phân tích theo mục đích
+- Triển khai trang chọn số ngân hàng hoàn chỉnh
+- Thêm hiệu ứng thông báo thành công sau thanh toán
+
+### Đang thực hiện:
+- Tối ưu hóa hiệu suất phân tích
+
+## 05/06/2024
+### Hoàn thành:
+- Công cụ tạo mật khẩu theo phong thủy
+- Công cụ gợi ý số tài khoản ngân hàng theo phong thủy
+- Cập nhật hướng dẫn cặp số cuối theo mục đích
+
+### Đang thực hiện:
+- Cải thiện thuật toán gợi ý số điện thoại
+- Phát triển trang chọn số ngân hàng
+
+## 30/05/2024
+### Hoàn thành:
+- Xây dựng UI cho trang chủ
+- Trang chính (App.vue) với sidebar
+- Login/Register với xác thực JWT
+- Hiển thị lịch sử phân tích
+- Chat với AI (Gemini)
+- Thêm trang Bát Cực Linh Số
+
+### Đang thực hiện:
+- Phát triển công cụ phân tích số điện thoại
+- Thiết kế giao diện trang thanh toán
+
+## 25/05/2024
+### Hoàn thành:
+- Thiết lập dự án cơ bản
+- Kết nối với backend
+- Cấu trúc thư mục và routing
+- Thiết lập Tailwind CSS
+
+### Đang thực hiện:
+- Xây dựng UI cho trang chủ
+- Phát triển trang Login/Register 
