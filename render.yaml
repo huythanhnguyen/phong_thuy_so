@@ -1,7 +1,14 @@
 services:
 - type: web
-  name: phong_thuy_so
-  buildCommand: npm run build
+  name: phongthuysovue
+  env: node
+  buildCommand: npm install --legacy-peer-deps && npm run build
+  startCommand: npx serve -s dist -l $PORT
+  envVars:
+    - key: NODE_VERSION
+      value: 18
+  branch: main
+  autoDeploy: true
   publishDir: dist
   env: static
   buildCommand: npm run build
