@@ -4,7 +4,7 @@
     <Header />
 
     <main class="flex-grow bg-gray-50">
-      <div class="container mx-auto px-6 py-12">
+  <div class="container mx-auto px-6 py-12">
         <h1 class="text-4xl font-bold text-gray-800 mb-4 text-center">Bảng Giá Dịch Vụ</h1>
         <p class="text-lg text-gray-600 max-w-3xl mx-auto text-center mb-8">
           Tham khảo các gói dịch vụ của Phong Thủy Số để chọn gói phù hợp với nhu cầu tư vấn của bạn.
@@ -40,7 +40,7 @@
         
         <!-- Packages Tab -->
         <div v-if="activeTab === 'packages'">
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <!-- Map through packages -->
             <div 
               v-for="pkg in paymentPackages" 
@@ -183,7 +183,7 @@
         <div v-if="showSuccessView" class="success-overlay">
           <PaymentSuccess :transaction="paymentTransaction" />
         </div>
-      </div>
+    </div>
     </main>
 
     <!-- Footer -->
@@ -382,7 +382,7 @@ onMounted(() => {
   link.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css';
   document.head.appendChild(link);
 });
-</script>
+</script> 
 
 <style scoped>
 :root {
@@ -487,7 +487,7 @@ onMounted(() => {
   list-style: none;
   padding: 0;
   margin: 0;
-  space-y: 0.75rem;
+  gap: 0.75rem;
 }
 
 .package-feature {

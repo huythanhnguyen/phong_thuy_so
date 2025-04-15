@@ -4,13 +4,13 @@
     <Header />
 
     <main class="flex-grow">
-      <div class="container mx-auto px-6 py-12">
+  <div class="container mx-auto px-6 py-12">
         <h1 class="text-4xl font-bold text-center text-gray-800 mb-8">Dịch Vụ Của Chúng Tôi</h1>
         <p class="text-lg text-gray-600 max-w-3xl mx-auto text-center mb-12">
           Phong Thủy Số cung cấp nhiều dịch vụ hỗ trợ bạn áp dụng nguyên lý phong thủy vào cuộc sống hàng ngày, từ việc chọn số điện thoại, số tài khoản đến phân tích thông tin cá nhân.
         </p>
         
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <!-- Chọn Số Điện Thoại -->
           <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
             <div class="bg-gradient-to-r from-blue-100 to-blue-50 p-8 flex justify-center">
@@ -158,7 +158,7 @@
             Liên hệ ngay
           </router-link>
         </div>
-      </div>
+    </div>
     </main>
 
     <!-- Footer -->
@@ -230,7 +230,7 @@ const services = ref([
     color: 'indigo'
   }
 ])
-</script>
+</script> 
 
 <style scoped>
 :root {
