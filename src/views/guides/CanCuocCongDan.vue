@@ -1,11 +1,33 @@
 <template>
     <div class="min-h-screen flex flex-col">
+  
       <!-- Header -->
       <Header />
   
       <!-- Main Content -->
-      <div class="container mx-auto px-4 py-8 flex-grow">
-        <div class="max-w-4xl mx-auto">
+      <div class="container mx-auto px-4 py-8 flex-grow max-w-4xl">
+        <!-- Analysis Input Section -->
+        <div class="mb-8">
+            <!-- Title -->
+            <h1 class="text-3xl md:text-4xl font-bold mb-6 text-gray-800">Phân Tích Căn Cước Công Dân</h1>
+          
+            <!-- CCCD Input -->
+            <div class="mb-4">
+              <label for="cccd" class="block text-gray-700 text-sm font-bold mb-2">Nhập số Căn Cước Công Dân (12 số):</label>
+              <input type="text" id="cccd" v-model="cccd" 
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    placeholder="Nhập 12 số CCCD" maxlength="12">
+              <p v-if="cccdError" class="text-red-500 text-xs italic">{{ cccdError }}</p>
+           </div>
+        
+            <!-- Analyze Button -->
+            <div class="mb-4">
+              <button @click="analyzeCCCD" :disabled="loading"
+                      class="bg-primary hover:bg-primary-dark text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                {{ loading ? 'Đang phân tích...' : 'Phân tích CCCD' }}
+              </button>
+            </div>
+
           <!-- Breadcrumb -->
           <div class="flex items-center text-sm text-gray-500 mb-6">
             <router-link to="/" class="hover:text-primary">Trang chủ</router-link>
@@ -13,8 +35,7 @@
             <span class="text-gray-700">Căn Cước Công Dân</span>
           </div>
           
-          <!-- Title -->
-          <h1 class="text-3xl md:text-4xl font-bold mb-6 text-gray-800">Ý Nghĩa Căn Cước Công Dân</h1>
+          <h1 class="text-3xl md:text-4xl font-bold mb-6 text-gray-800">Ý Nghĩa Căn Cước Công Dân</h1>          
           
           <!-- Content -->
           <div class="prose prose-lg max-w-none">
@@ -103,16 +124,42 @@
               truyền kết hợp với các phương pháp hiện đại.
             </p>
           </div>
-          
-          <!-- Call to action -->
-          <div class="text-center my-12">
-            <p class="text-lg font-medium mb-6">Bạn muốn phân tích số căn cước của mình?</p>
-            <button @click="navigateToLogin()" class="bg-primary text-white font-bold py-3 px-8 rounded-lg hover:bg-primary-dark transition-colors">
-              Bắt đầu ngay
-            </button>
+
+          <!-- Analysis Result Section -->
+          <div v-if="displayAnalysis">
+            <h3 class="font-bold text-xl">Kết quả phân tích</h3>
+            <p>Số gốc: {{ displayAnalysis.originalNumber }}</p>
+            <p>Sáu số cuối: {{ displayAnalysis.lastSixDigits }}</p>
+            <p>Chuỗi chuẩn hóa: {{ displayAnalysis.normalizedSequence }}</p>
+            <p>Các cặp số: {{ displayAnalysis.pairs.join(', ') }}</p>
+
+            <h4 class="font-bold">Các cặp số chi tiết</h4>
+            <ul class="list-disc pl-5">
+              <li v-for="pair in displayAnalysis.analysis.individualPairs" :key="pair.pairNumber">
+                <span class="font-bold">Cặp {{ pair.digits }}</span>: {{ pair.star }} ({{ pair.starKey }}), {{ pair.meaning }}
+              </li>
+            </ul>
+
+            <h4 class="font-bold">Các tổ hợp sao</h4>
+            <ul class="list-disc pl-5">
+              <li v-for="combination in displayAnalysis.analysis.starCombinations" :key="combination.combinationNumber">
+                <span class="font-bold">{{ combination.stars }}</span>: {{ combination.meaning }}
+                <ul class="list-disc pl-5">
+                  <li v-for="detail in combination.details" :key="detail">{{ detail }}</li>
+                </ul>
+              </li>
+            </ul>
+
+            <p>Tổng quan: {{ displayAnalysis.analysis.overallSummary }}</p>
           </div>
+
         </div>
+
       </div>
+
+    
+
+
   
       <!-- Footer -->
       <Footer />
@@ -120,11 +167,60 @@
   </template>
   
   <script setup>
-  import { useRouter } from 'vue-router'
-  import Header from '@/components/layout/Header.vue'
-  import Footer from '@/components/layout/Footer.vue'
+
+  import { ref, reactive } from 'vue';
+  import { useRouter } from 'vue-router';
+  import Header from '@/components/layout/Header.vue';
+  import Footer from '@/components/layout/Footer.vue';
+  import DetailedAnalysis from '@/components/analysis/DetailedAnalysis.vue';
   
-  const router = useRouter()
+  const router = useRouter();
+  
+  const cccd = ref('');
+  const cccdError = ref('');
+  const analysisResults = ref(null);
+  const loading = ref(false);
+  const displayAnalysis = ref(null);
+  
+  const validateCCCD = () => {
+      cccdError.value = '';
+      const cccdValue = cccd.value.trim();
+      const isValid = /^\d{12}$/.test(cccdValue);
+      if (!isValid) cccdError.value = 'Số CCCD phải là 12 chữ số.';
+      return isValid;
+  };
+  
+  const analyzeCCCD = async () => {
+    if (!validateCCCD()) {
+      return;
+    }
+  
+    loading.value = true;
+    analysisResults.value = null; 
+    displayAnalysis.value = null;
+  
+    try {
+      const response = await fetch('https://chatbotsdtapi.onrender.com/api/cccd/analyze-cccd', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ cccdNumber: cccd.value })
+      });
+  
+      if (!response.ok) {
+        const data = await response.json(); // Parse error response
+        throw new Error('Failed to analyze CCCD: ' + data.message);
+      }
+  
+      const data = await response.json();
+      displayAnalysis.value = data.data;
+    } catch (error) {
+        cccdError.value = error.message
+    } finally {
+      loading.value = false;
+    }
+  }
   
   // Navigation method
   const navigateToLogin = () => {
