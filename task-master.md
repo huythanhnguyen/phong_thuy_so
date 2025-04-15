@@ -285,4 +285,171 @@ Tài liệu này chứa danh sách các nhiệm vụ cần thực hiện để p
   - [x] Tối ưu hóa giao diện thanh toán cho thiết bị di động
   - [ ] Cải thiện trải nghiệm người dùng trên màn hình nhỏ
   - [ ] Kiểm thử trên nhiều loại thiết bị khác nhau
-  - [ ] Đảm bảo tính năng chính hoạt động đầy đủ trên di động 
+  - [ ] Đảm bảo tính năng chính hoạt động đầy đủ trên di động
+
+## Giai đoạn 4: Nâng cấp AppView với Dropdown và Chatbot Thông Minh
+
+### 8. Nâng cấp AppView với tính năng đa công cụ
+
+#### 8.1. UI Dropdown chuyển đổi công cụ
+- ID: `APP-001`
+- Mô tả: Thiết kế và triển khai dropdown cho phép chuyển đổi giữa các công cụ khác nhau
+- Độ ưu tiên: P1
+- Trạng thái: `TODO`
+- Người được giao: TBD
+- Deadline: DD/MM/YYYY
+- Công việc chi tiết:
+  - [ ] Thiết kế UI dropdown menu tích hợp vào AppHeader
+  - [ ] Thêm các tùy chọn: Phân tích số điện thoại, Chọn mật khẩu, Phân tích tài khoản ngân hàng, Phân tích CCCD
+  - [ ] Tạo các icon phù hợp cho mỗi loại công cụ
+  - [ ] Thêm animation chuyển đổi giữa các công cụ
+
+#### 8.2. State Management cho đa công cụ
+- ID: `APP-002`
+- Mô tả: Nâng cấp state management để xử lý nhiều loại công cụ phân tích
+- Độ ưu tiên: P1
+- Trạng thái: `TODO`
+- Người được giao: TBD
+- Deadline: DD/MM/YYYY
+- Công việc chi tiết:
+  - [ ] Cập nhật Pinia store để lưu trữ loại công cụ hiện tại
+  - [ ] Tạo các store riêng cho từng loại công cụ nếu cần
+  - [ ] Xử lý persistence cho lịch sử sử dụng các công cụ
+  - [ ] Đảm bảo chuyển đổi mượt mà giữa các context khác nhau
+
+#### 8.3. Hiển thị tùy chỉnh theo loại công cụ
+- ID: `APP-003`
+- Mô tả: Tùy chỉnh giao diện và trải nghiệm người dùng theo loại công cụ đang chọn
+- Độ ưu tiên: P2
+- Trạng thái: `TODO`
+- Người được giao: TBD
+- Deadline: DD/MM/YYYY
+- Công việc chi tiết:
+  - [ ] Tạo templates UI khác nhau cho mỗi loại công cụ
+  - [ ] Thiết kế components chung có thể tái sử dụng giữa các công cụ
+  - [ ] Tạo các placeholder và hướng dẫn phù hợp với từng loại công cụ
+  - [ ] Thiết kế chế độ chuyển đổi theme theo loại công cụ nếu cần
+
+### 9. Nâng cấp Chatbot để thu thập thông tin người dùng
+
+#### 9.1. Flow thu thập thông tin
+- ID: `CHAT-001`
+- Mô tả: Xây dựng flow chatbot thông minh để thu thập thông tin người dùng
+- Độ ưu tiên: P0
+- Trạng thái: `TODO`
+- Người được giao: TBD
+- Deadline: DD/MM/YYYY
+- Công việc chi tiết:
+  - [ ] Thiết kế flow hội thoại thu thập thông tin cơ bản (tên, ngày sinh)
+  - [ ] Tạo flow hỏi mục tiêu sử dụng (tài lộc, tình duyên, sự nghiệp, sức khỏe)
+  - [ ] Xây dựng cơ chế thu thập CCCD một cách an toàn và tuân thủ GDPR
+  - [ ] Cài đặt cơ chế nhắc nhở người dùng cung cấp thông tin còn thiếu
+
+#### 9.2. Validate và xử lý thông tin đầu vào
+- ID: `CHAT-002`
+- Mô tả: Xây dựng hệ thống validate và xử lý thông tin người dùng nhập vào
+- Độ ưu tiên: P1
+- Trạng thái: `TODO`
+- Người được giao: TBD
+- Deadline: DD/MM/YYYY
+- Công việc chi tiết:
+  - [ ] Xây dựng bộ validator cho ngày sinh (đúng định dạng, hợp lệ)
+  - [ ] Xây dựng bộ validator cho CCCD (đúng định dạng, checksum)
+  - [ ] Tạo hệ thống phản hồi lỗi thân thiện khi thông tin không hợp lệ
+  - [ ] Cài đặt cơ chế gợi ý điền thông tin đúng
+
+#### 9.3. Lưu trữ thông tin người dùng an toàn
+- ID: `CHAT-003`
+- Mô tả: Xây dựng hệ thống lưu trữ thông tin người dùng an toàn và tuân thủ quy định
+- Độ ưu tiên: P0
+- Trạng thái: `TODO`
+- Người được giao: TBD
+- Deadline: DD/MM/YYYY
+- Công việc chi tiết:
+  - [ ] Thiết kế schema database để lưu thông tin người dùng
+  - [ ] Triển khai mã hóa dữ liệu nhạy cảm (CCCD, thông tin cá nhân)
+  - [ ] Xây dựng cơ chế quản lý quyền truy cập dữ liệu
+  - [ ] Tạo chính sách xóa dữ liệu khi không còn cần thiết
+
+#### 9.4. Giao diện chatbot thông minh
+- ID: `CHAT-004`
+- Mô tả: Cải tiến giao diện chatbot để tối ưu trải nghiệm người dùng
+- Độ ưu tiên: P1
+- Trạng thái: `TODO`
+- Người được giao: TBD
+- Deadline: DD/MM/YYYY
+- Công việc chi tiết:
+  - [ ] Thiết kế UI chatbot thân thiện và hấp dẫn
+  - [ ] Thêm các thành phần tương tác như buttons, datepicker, dropdowns
+  - [ ] Tạo hiệu ứng typing và loading khi chatbot đang xử lý
+  - [ ] Thiết kế các templates tin nhắn khác nhau cho từng loại nội dung
+
+### 10. Thuật toán tối ưu hóa và luận giải kết quả
+
+#### 10.1. Thuật toán tối ưu cho mỗi loại công cụ
+- ID: `ALGO-001`
+- Mô tả: Phát triển các thuật toán tối ưu hóa cho từng loại công cụ
+- Độ ưu tiên: P1
+- Trạng thái: `TODO`
+- Người được giao: TBD
+- Deadline: DD/MM/YYYY
+- Công việc chi tiết:
+  - [ ] Phát triển thuật toán chọn số điện thoại tối ưu dựa trên thông tin cá nhân
+  - [ ] Phát triển thuật toán tạo mật khẩu phù hợp theo mục tiêu
+  - [ ] Phát triển thuật toán chọn số tài khoản ngân hàng tối ưu
+  - [ ] Tích hợp yếu tố phong thủy vào các thuật toán
+
+#### 10.2. Engine luận giải kết quả
+- ID: `ALGO-002`
+- Mô tả: Xây dựng engine luận giải kết quả chi tiết cho người dùng
+- Độ ưu tiên: P1
+- Trạng thái: `TODO`
+- Người được giao: TBD
+- Deadline: DD/MM/YYYY
+- Công việc chi tiết:
+  - [ ] Xây dựng hệ thống template luận giải cho từng loại phân tích
+  - [ ] Tạo cơ chế đưa ra lời khuyên cá nhân hóa dựa trên thông tin người dùng
+  - [ ] Thêm tính năng so sánh chi tiết giữa các lựa chọn tối ưu
+  - [ ] Thiết kế UI hiển thị kết quả luận giải thân thiện với người dùng
+
+#### 10.3. Lưu trữ và tái sử dụng kết quả
+- ID: `ALGO-003`
+- Mô tả: Xây dựng hệ thống lưu trữ và tái sử dụng kết quả phân tích
+- Độ ưu tiên: P2
+- Trạng thái: `TODO`
+- Người được giao: TBD
+- Deadline: DD/MM/YYYY
+- Công việc chi tiết:
+  - [ ] Thiết kế schema database để lưu kết quả phân tích
+  - [ ] Tạo cơ chế cache kết quả để tăng tốc độ phân tích
+  - [ ] Xây dựng API để lấy lịch sử phân tích
+  - [ ] Tạo tính năng chia sẻ kết quả phân tích (nếu người dùng muốn)
+
+#### 10.4. Các mô hình dự đoán
+- ID: `ALGO-004`
+- Mô tả: Phát triển các mô hình dự đoán phong thủy dựa trên machine learning
+- Độ ưu tiên: P2
+- Trạng thái: `TODO`
+- Người được giao: TBD
+- Deadline: DD/MM/YYYY
+- Công việc chi tiết:
+  - [ ] Thu thập và chuẩn bị dữ liệu huấn luyện
+  - [ ] Xây dựng mô hình dự đoán số điện thoại phù hợp
+  - [ ] Xây dựng mô hình khuyến nghị mật khẩu
+  - [ ] Đánh giá và tối ưu hóa độ chính xác của mô hình
+
+### 11. Tích hợp và kiểm thử
+
+#### 11.1. Tích hợp các công cụ mới
+- ID: `INT-001`
+- Mô tả: Tích hợp tất cả các công cụ mới vào hệ thống hiện tại
+- Độ ưu tiên: P1
+- Trạng thái: `TODO`
+- Người được giao: TBD
+- Deadline: DD/MM/YYYY
+- Công việc chi tiết:
+  - [ ] Đảm bảo tính tương thích giữa các công cụ mới và cũ
+  - [ ] Kiểm thử tích hợp giữa frontend và backend
+  - [ ] Tối ưu hóa luồng dữ liệu giữa các thành phần
+  - [ ] Tạo tài liệu API cho từng điểm tích hợp
+
