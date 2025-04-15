@@ -4,6 +4,8 @@ services:
   buildCommand: npm run build
   publishDir: dist
   env: static
+  buildCommand: npm run build
+  staticPublishPath: ./dist
   # Xóa phần startCommand vì không cần
   routes:
     - type: rewrite
