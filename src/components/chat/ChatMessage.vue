@@ -1,17 +1,20 @@
 <template>
   <div>
     <!-- Thêm QuotaAlert nếu là tin nhắn cuối cùng từ bot và hết câu hỏi -->
-    <quota-alert v-if="isBot && isLastMessage && showQuotaAlert" 
-                @close="handleCloseAlert" 
-                :show="showQuotaAlert" />
+    <quota-alert 
+      v-if="isBot && isLastMessage && showQuotaAlert" 
+      @close="handleCloseAlert" 
+      :show="showQuotaAlert" 
+    />
                 
-  <div class="message" :class="messageClass" :id="message.id">
-    <!-- Nội dung tin nhắn -->
-    <div class="message-content" v-html="formattedContent"></div>
-    
-    <!-- Phần phân tích (nếu có) -->
-    <div v-if="hasAnalysisData" class="analysis-container">
-      <analysis-result :data="message.analysisData" />
+    <div class="message" :class="messageClass" :id="message.id">
+      <!-- Nội dung tin nhắn -->
+      <div class="message-content" v-html="formattedContent"></div>
+      
+      <!-- Phần phân tích (nếu có) -->
+      <div v-if="hasAnalysisData" class="analysis-container">
+        <analysis-result :data="message.analysisData" />
+      </div>
     </div>
   </div>
 </template>
