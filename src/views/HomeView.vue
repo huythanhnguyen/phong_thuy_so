@@ -248,69 +248,6 @@
   </div>
 </section>
 
-    <!-- Trường Hợp Thành Công Section - MỚI -->
-    <section class="py-16 bg-white">
-      <div class="container mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center mb-12">Trường Hợp Thành Công</h2>
-        
-        <div class="grid md:grid-cols-3 gap-6">
-          <div class="bg-white rounded-lg shadow p-6 border-t-4 border-green-500">
-            <div class="text-gray-500 mb-3">
-              <font-awesome-icon icon="quote-left" class="text-green-200 text-3xl" />
-            </div>
-            <p class="mb-4 text-gray-700">
-              "Tôi đã thay đổi số điện thoại theo phương pháp Bát Cục Linh Số từ hai năm trước. Từ một người kinh doanh nhỏ lẻ, hiện tôi đã mở rộng được 3 chi nhánh và doanh thu tăng gấp 5 lần."
-            </p>
-            <div class="flex items-center">
-              <div class="w-10 h-10 bg-primary-light rounded-full flex items-center justify-center">
-                <font-awesome-icon icon="user" class="text-primary" />
-              </div>
-              <div class="ml-3">
-                <h4 class="font-semibold">Nguyễn Văn A</h4>
-                <p class="text-sm text-gray-500">Chủ doanh nghiệp, Hà Nội</p>
-              </div>
-            </div>
-          </div>
-          
-          <div class="bg-white rounded-lg shadow p-6 border-t-4 border-blue-500">
-            <div class="text-gray-500 mb-3">
-              <font-awesome-icon icon="quote-left" class="text-blue-200 text-3xl" />
-            </div>
-            <p class="mb-4 text-gray-700">
-              "Sau khi chọn biển số xe theo phương pháp Tứ Cát Tứ Hung, không chỉ tôi tránh được tai nạn giao thông mà còn gặp nhiều may mắn bất ngờ trong công việc, dường như xe của tôi hút cả tài lộc."
-            </p>
-            <div class="flex items-center">
-              <div class="w-10 h-10 bg-primary-light rounded-full flex items-center justify-center">
-                <font-awesome-icon icon="user" class="text-primary" />
-              </div>
-              <div class="ml-3">
-                <h4 class="font-semibold">Trần Thị B</h4>
-                <p class="text-sm text-gray-500">Nhân viên kinh doanh, TP. HCM</p>
-              </div>
-            </div>
-          </div>
-          
-          <div class="bg-white rounded-lg shadow p-6 border-t-4 border-yellow-500">
-            <div class="text-gray-500 mb-3">
-              <font-awesome-icon icon="quote-left" class="text-yellow-200 text-3xl" />
-            </div>
-            <p class="mb-4 text-gray-700">
-              "Tôi đã từng gặp nhiều khó khăn trong các mối quan hệ. Sau khi đổi số điện thoại có nhiều cặp 'Diên Niên' và 'Sinh Khí', tôi đã gặp được người bạn đời hiện tại và xây dựng gia đình hạnh phúc."
-            </p>
-            <div class="flex items-center">
-              <div class="w-10 h-10 bg-primary-light rounded-full flex items-center justify-center">
-                <font-awesome-icon icon="user" class="text-primary" />
-              </div>
-              <div class="ml-3">
-                <h4 class="font-semibold">Lê Văn C</h4>
-                <p class="text-sm text-gray-500">Kỹ sư IT, Đà Nẵng</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- FAQ Section -->
     <section class="py-16 bg-gray-50">
       <div class="container mx-auto px-4">
