@@ -13,42 +13,11 @@
     <div v-if="hasAnalysisData" class="analysis-container">
       <analysis-result :data="message.analysisData" />
     </div>
-    
-    <!-- Phần gợi ý câu hỏi (nếu là tin nhắn bot có phân tích) -->
-    <div v-if="isBot && hasAnalysisData" class="suggestion-section">
-      <div class="suggestion-text">
-        <p>Bạn có thể hỏi thêm về:</p>
-      </div>
-      <div class="question-examples">
-        <button 
-          v-for="(question, index) in questionExamples" 
-          :key="index" 
-          class="example-question-btn"
-          @click="onQuestionSelect(question)"
-        >
-          {{ question }}
-        </button>
-      </div>
-      
-      <!-- Suggestion chips -->
-      <div class="suggestion-chips">
-        <button 
-          v-for="(category, index) in categories" 
-          :key="index"
-          class="category-btn" 
-          :data-category="category.value"
-          @click="onCategorySelect(category)"
-        >
-          <font-awesome-icon :icon="category.icon" /> {{ category.label }}
-        </button>
-        </div>
-      </div>
-    </div>
   </div>
 </template>
 
 <script setup>
-import { computed, inject } from 'vue'
+import { computed } from 'vue'
 import { formatBotMessage } from '@/utils'
 import AnalysisResult from '@/components/analysis/AnalysisResult.vue'
 import QuotaAlert from '@/components/payment/QuotaAlert.vue'
@@ -65,7 +34,6 @@ const props = defineProps({
   }
 })
 
-const emit = defineEmits(['question-select', 'category-select'])
 const chatStore = useChatStore()
 
 // Computed
@@ -91,67 +59,8 @@ const formattedContent = computed(() => {
   return props.message.content
 })
 
-// Categories for suggestion chips
-const categories = [
-  { label: 'Kinh doanh', icon: 'briefcase', value: 'business' },
-  { label: 'Tình duyên', icon: 'heart', value: 'love' },
-  { label: 'Tài lộc', icon: 'coins', value: 'wealth' },
-  { label: 'Sức khỏe', icon: 'heartbeat', value: 'health' }
-]
-
-// Question examples
-const questionExamples = computed(() => {
-  const examples = [
-    "Số này ảnh hưởng thế nào đến sự nghiệp của tôi?",
-    "Mối quan hệ với người khác có tốt không?", 
-    "Số này có phải là số may mắn không?",
-    "Tôi có nên giữ số điện thoại này không?",
-    "Cặp sao cuối thể hiện gì?",
-    "Số nào ảnh hưởng nhiều nhất đến tình duyên?"
-  ]
-  
-  // Thêm câu hỏi động dựa vào dữ liệu phân tích
-  if (hasAnalysisData.value) {
-    const data = props.message.analysisData.result || props.message.analysisData
-    
-    if (data.balance === 'HUNG_HEAVY') {
-      examples.push("Làm thế nào để hóa giải sao hung?")
-    }
-  }
-  
-  return examples
-})
-
-// Methods
-const onQuestionSelect = (question) => {
-  emit('question-select', question)
-}
-
-const onCategorySelect = (category) => {
-  let question = ''
-  switch (category.value) {
-    case 'business':
-      question = 'Số điện thoại này ảnh hưởng thế nào đến công việc kinh doanh?'
-      break
-    case 'love':
-      question = 'Số điện thoại này có ý nghĩa gì về tình duyên của tôi?'
-      break
-    case 'wealth':
-      question = 'Số điện thoại này ảnh hưởng thế nào đến tài chính của tôi?'
-      break
-    case 'health':
-      question = 'Số điện thoại này có liên quan đến sức khỏe của tôi không?'
-      break
-    default:
-      question = 'Hãy phân tích thêm về ' + category.value
-  }
-  
-  emit('category-select', question)
-}
-
 const handleCloseAlert = () => {
   chatStore.setShowQuotaAlert(false)
-  // Lưu thời điểm đóng thông báo để không hiển thị lại trong 7 ngày
   localStorage.setItem('quota_alert_shown_time', new Date().getTime().toString())
 }
 </script>
